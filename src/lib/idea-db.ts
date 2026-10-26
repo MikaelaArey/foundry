@@ -321,17 +321,3 @@ export function ideaOfTheDay(date = new Date()) {
   const day = Math.floor(date.getTime() / 864e5);
   return IDEAS[day % IDEAS.length];
 }
-
-export const overallScore = (r: Report) =>
-  Math.round(((r.scores.opportunity + r.scores.problem + r.scores.feasibility + r.scores.whyNow) / 40) * 100);
-
-/** Offline stand-in for the AI generator: ranks database ideas by keyword overlap. */
-export function matchIdeas(query: string, limit = 5) {
-  const words = query.toLowerCase().split(/[^a-z0-9]+/).filter((w) => w.length > 2);
-  const scored = IDEAS.map((idea, i) => {
-    const hay = `${idea.title} ${idea.tagline} ${idea.category} ${idea.report.audience} ${idea.report.summary}`.toLowerCase();
-    const hits = words.reduce((a, w) => a + (hay.includes(w) ? 1 : 0), 0);
-    return { idea, rank: hits * 100 + overallScore(idea.report) + ((i * 7) % 5) };
-  });
-  return scored.sort((a, b) => b.rank - a.rank).slice(0, limit).map((x) => x.idea);
-}

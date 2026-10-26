@@ -37,7 +37,6 @@ export function AppShell({
   const nav = [
     { href: "/app", label: "Home", icon: "home", exact: true },
     { href: "/app/notebook", label: "Notebook", icon: "book", count: ideaCount },
-    { href: "/app/generate", label: "Idea generator", icon: "sparkles" },
     { href: "/explore", label: "Idea Database", icon: "compass" },
     { href: "/community", label: "Community", icon: "users" },
     ...(typeof openReports === "number" ? [{ href: "/app/moderation", label: "Moderation", icon: "shield", count: openReports }] : []),
@@ -136,7 +135,7 @@ export function AppShell({
             <Icon name="users" />
             <span>Community</span>
           </Link>
-          <button className="tab" onClick={() => setOpen(true)} aria-label="More: projects, generator, settings">
+          <button className="tab" onClick={() => setOpen(true)} aria-label="More: projects, Idea Database, settings">
             <Icon name="menu" />
             <span>More</span>
           </button>

@@ -34,20 +34,6 @@ export const ReportSchema = z.object({
 });
 export type Report = z.infer<typeof ReportSchema>;
 
-export const GeneratedIdeaSchema = z.object({
-  title: z.string(),
-  pitch: z.string().describe("One sentence."),
-  audience: z.string(),
-  category: z.string().describe("One or two words, like SaaS, Marketplace, Service."),
-  potential: z.number().describe("0-100 overall potential score"),
-  difficulty: z.enum(["Easy", "Medium", "Hard"]),
-  market: z.enum(["Niche", "Medium", "Large"]),
-  whyItWorks: z.string().describe("One sentence."),
-  firstStep: z.string().describe("One concrete first step."),
-});
-export type GeneratedIdea = z.infer<typeof GeneratedIdeaSchema>;
-export const GeneratedIdeasSchema = z.object({ ideas: z.array(GeneratedIdeaSchema) });
-
 export const PlanSchema = z.object({
   sections: z.array(z.object({ kind: z.enum(PLAN_KINDS), goals: z.array(z.string()) })),
 });
@@ -76,10 +62,6 @@ export function cleanReport(r: Report): Report {
     experiments: trimList(r.experiments, 4, 240),
     plan: r.plan.slice(0, 5).map((p) => ({ kind: p.kind, goals: trimList(p.goals, 6) })),
   };
-}
-
-export function cleanGeneratedIdea(i: GeneratedIdea): GeneratedIdea {
-  return { ...i, potential: clamp(i.potential, 0, 100), title: i.title.slice(0, 90), pitch: i.pitch.slice(0, 280) };
 }
 
 export function parseReport(json: string | null | undefined): Report | null {

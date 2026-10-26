@@ -1180,84 +1180,7 @@ p {
   color: var(--ink-3);
 }
 
-/* -------------------------------------------------------------- generator */
-.gen-hero {
-  text-align: center;
-  display: grid;
-  justify-items: center;
-  gap: 16px;
-  padding-block: 36px 8px;
-}
-.gen-box {
-  width: 100%;
-  max-width: 860px;
-  margin: 8px auto 0;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 190px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-}
-.gen-inputs {
-  display: grid;
-}
-.gen-line {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0 16px;
-  min-height: 60px;
-}
-.gen-line + .gen-line {
-  border-top: 1px solid var(--line);
-}
-.gen-line .icon {
-  color: var(--brand-text);
-}
-.gen-line input {
-  flex: 1;
-  min-width: 0;
-  border: 0;
-  background: transparent;
-  font-size: 15.5px;
-  padding: 14px 0;
-}
-.gen-line input:focus {
-  outline: none;
-}
-.gen-submit {
-  border: 0;
-  cursor: pointer;
-  color: #fff;
-  display: grid;
-  place-items: center;
-  align-content: center;
-  gap: 6px;
-  font-weight: 600;
-  font-size: 16px;
-  background: linear-gradient(140deg, var(--brand), color-mix(in srgb, var(--brand) 40%, var(--brand-2)));
-}
-.gen-submit small {
-  font-size: 11.5px;
-  font-weight: 500;
-  opacity: 0.85;
-}
-.gen-submit:hover {
-  filter: brightness(1.07);
-}
-.gen-submit[disabled] {
-  cursor: progress;
-  filter: saturate(0.6);
-}
-.gen-opts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 14px;
-}
+/* ------------------------------------------------------ segmented control */
 .seg {
   display: inline-flex;
   padding: 3px;
@@ -1281,21 +1204,6 @@ p {
   background: var(--surface);
   color: var(--brand-text);
   box-shadow: var(--shadow-sm);
-}
-.gen-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 16px;
-}
-.gen-card {
-  padding: 20px;
-  display: grid;
-  gap: 12px;
-  align-content: start;
-}
-.gen-card h3 {
-  font: 600 17px/1.3 var(--f-sans);
-  letter-spacing: -0.01em;
 }
 .meta-line {
   display: flex;
@@ -2845,12 +2753,6 @@ p {
   }
   .kpis {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .gen-box {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .gen-submit {
-    min-height: 56px;
   }
   .stepper {
     display: flex;

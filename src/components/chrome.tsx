@@ -33,7 +33,7 @@ export async function Chrome({
   children: React.ReactNode;
   requireAuth?: boolean;
   next?: string;
-  current?: "explore" | "community" | "generate";
+  current?: "explore" | "community";
 }) {
   const user = requireAuth ? await requireUser(next) : await getCurrentUser();
   if (!user) {

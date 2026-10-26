@@ -45,7 +45,7 @@ export default function TermsPage() {
 
       <h2>AI features and idea reports</h2>
       <p>
-        Validation reports, scores, generated ideas and suggested goals are meant to help you think. They aren&rsquo;t financial, legal or
+        Validation reports, scores and suggested goals are meant to help you think. They aren&rsquo;t financial, legal or
         professional advice, and they can be wrong. Check important decisions with real customers and qualified advisors.
       </p>
 

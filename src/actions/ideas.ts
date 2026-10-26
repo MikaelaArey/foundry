@@ -8,7 +8,7 @@ import { NOTE_COLORS } from "@/lib/constants";
 import { findIdea } from "@/lib/idea-db";
 import { AiError, validateIdea } from "@/lib/ai";
 import { allow } from "@/lib/ratelimit";
-import { parseReport, type GeneratedIdea, type Report } from "@/lib/schemas";
+import { parseReport, type Report } from "@/lib/schemas";
 import { parseTags, splitTags, tagsToString } from "@/lib/utils";
 
 export type IdeaDTO = {
@@ -146,26 +146,6 @@ export async function saveCuratedIdeaAction(slug: string) {
     ).id;
   refresh();
   redirect(`/app/notebook?id=${id}`);
-}
-
-export async function saveGeneratedIdeaAction(g: GeneratedIdea & { slug?: string }): Promise<{ id: string }> {
-  const user = await requireUser();
-  const curated = g.slug ? findIdea(g.slug) : null;
-  const body = [g.pitch, "", `Who it's for: ${g.audience}`, `Why it works: ${g.whyItWorks}`, `First step: ${g.firstStep}`].join("\n");
-  const idea = await db.idea.create({
-    data: {
-      userId: user.id,
-      title: String(g.title).slice(0, 140),
-      body: body.slice(0, 20000),
-      tags: tagsToString([g.category]),
-      spark: g.potential >= 80 ? 3 : g.potential >= 60 ? 2 : 1,
-      color: "purple",
-      source: curated ? "database" : "generated",
-      report: curated ? JSON.stringify(curated.report) : null,
-    },
-  });
-  refresh();
-  return { id: idea.id };
 }
 
 export async function validateIdeaAction(id: string): Promise<{ report?: Report; error?: string }> {

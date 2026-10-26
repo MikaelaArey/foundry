@@ -4,7 +4,7 @@ import { Brand } from "./ui";
 import { Icon } from "./icon";
 import { ThemeToggle } from "./theme-toggle";
 
-export async function SiteHeader({ current }: { current?: "explore" | "community" | "generate" }) {
+export async function SiteHeader({ current }: { current?: "explore" | "community" }) {
   const user = await getCurrentUser();
   return (
     <header className="site-header">
@@ -13,9 +13,6 @@ export async function SiteHeader({ current }: { current?: "explore" | "community
         <nav className="nav-links" aria-label="Main">
           <Link href="/explore" aria-current={current === "explore" ? "page" : undefined}>
             Idea Database
-          </Link>
-          <Link href="/app/generate" aria-current={current === "generate" ? "page" : undefined}>
-            Generator
           </Link>
           <Link href="/community" aria-current={current === "community" ? "page" : undefined}>
             Community

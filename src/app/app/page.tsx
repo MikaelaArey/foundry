@@ -116,7 +116,7 @@ export default async function Dashboard() {
           <div className="features">
             {[
               ["bolt", "", "Capture an idea", "Write down anything on your mind. Half-baked is fine.", "/app/notebook?new=1"],
-              ["target", "good", "Validate it", "Get scores, risks and the cheapest tests to run, or generate new ideas.", "/app/generate"],
+              ["target", "good", "Study a validated idea", "See how the Idea Database scores ideas, with risks and the cheapest tests to run.", "/explore"],
               ["layers", "info", "Make it a project", "Pick sections like Coding and Marketing and check off small goals.", "/app/projects/new"],
             ].map(([icon, tone, title, text, href], i) => (
               <Link key={title} href={href} className="card card-hover feature">

@@ -195,12 +195,6 @@ await step("Notebook: Make it a project links the idea", async () => {
   await waitFor("document.body.innerText.includes('Missed-call rescue')");
   return "idea.projectId set and shown under Ideas for this project";
 });
-await step("Generator without an API key falls back to the Idea Database", async () => {
-  await go("/app/generate?industry=restaurants");
-  await waitFor("document.querySelectorAll('.gen-card').length >= 1", 20000);
-  const first = await js("return document.querySelector('.gen-card h3').textContent");
-  return `first match: ${first}`;
-});
 // ---------------------------------------------------------------- safety
 const priyaPost = sql("select p.id from Post p join User u on p.userId=u.id where u.email='priya@sample.foundry.local' order by p.createdAt desc limit 1");
 

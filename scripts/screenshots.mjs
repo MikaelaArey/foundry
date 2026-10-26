@@ -21,7 +21,6 @@ const jobs = [
   { name: "dashboard", url: "/app", height: 1000 },
   { name: "project", url: "/app/projects/:coffee", height: 1100 },
   { name: "notebook", url: "/app/notebook?id=:nurses", height: 1000 },
-  { name: "generator", url: "/app/generate?industry=food", height: 1100, after: 2500 },
   { name: "idea-report", url: "/explore/missed-call-rescue", height: 1100 },
   { name: "community", url: "/community", height: 1000 },
   { name: "dashboard-dark", url: "/app", height: 1000, dark: true },

@@ -49,7 +49,7 @@ export default function PrivacyPage() {
 
       <h2>AI features</h2>
       <p>
-        When you use an AI feature, such as validating an idea, generating ideas or suggesting goals, the text needed for that request (for
+        When you use an AI feature, such as validating an idea or suggesting goals, the text needed for that request (for
         example the idea&rsquo;s title and notes) is sent to Anthropic, the company that makes Claude, to produce the result. It&rsquo;s only
         sent when you ask for an AI feature. Anthropic&rsquo;s commercial terms don&rsquo;t allow it to train its models on this data.
       </p>

@@ -12,8 +12,8 @@ export const dynamic = "force-dynamic";
 
 const FEATURES = [
   { icon: "book", tone: "", title: "A notebook for every spark", text: "Capture ideas in seconds, color and tag them, rate how excited you are, and find them again instantly." },
-  { icon: "target", tone: "good", title: "Validation reports", text: "Score any idea on opportunity, problem, feasibility and timing, with an offer ladder and the cheapest tests to run first." },
-  { icon: "sparkles", tone: "warm", title: "Idea generator", text: "Pick an industry and your unfair advantage. Get five specific business ideas with scores you can save or validate." },
+  { icon: "target", tone: "good", title: "Validation reports", text: "Browse ideas scored on opportunity, problem, feasibility and timing, with an offer ladder and the cheapest tests to run first." },
+  { icon: "flame", tone: "warm", title: "Momentum you can see", text: "“Next up” shows the next small goal in every project, and your streak keeps you making progress every day." },
   { icon: "layers", tone: "info", title: "Projects with sections", text: "Split each project into Coding, Marketing, Finance and more. Every section gets its own goals and progress bar." },
   { icon: "rocket", tone: "amber", title: "One-click Launchpad", text: "Connect GitHub, VS Code, Claude, ChatGPT and Gemini to a project and jump straight to where the work lives." },
   { icon: "users", tone: "bad", title: "A room full of founders", text: "Ask questions, share ideas, post wins and get feedback from people building alongside you." },
@@ -38,7 +38,7 @@ export default async function Home() {
           <div className="hero-grid">
             <div className="hero-copy">
               <span className="pill">
-                <b>New</b> Idea generator and validation reports
+                <b>New</b> The Idea Database, with full validation reports
               </span>
               <h1 className="display-xl">
                 Where ideas become <span className="grad italic">companies</span>.
@@ -158,37 +158,6 @@ export default async function Home() {
               <ScoreTiles report={iotd.report} />
             </div>
           </div>
-        </section>
-
-        {/* ------------------------------------------------------- generator */}
-        <section className="section container">
-          <div className="section-head">
-            <span className="eyebrow">Idea generator</span>
-            <h2 className="display-l">
-              Ideas that fit <span className="grad italic">you</span>.
-            </h2>
-            <p className="lead">Tell Foundry your industry and your unfair advantage. Get five specific ideas with scores in seconds.</p>
-          </div>
-          <form action="/app/generate" method="get" className="gen-box">
-            <div className="gen-inputs">
-              <label className="gen-line">
-                <Icon name="compass" />
-                <span className="sr-only">Industry or niche</span>
-                <input name="industry" placeholder="Pick an industry or niche, like pet care or fintech" autoComplete="off" />
-              </label>
-              <label className="gen-line">
-                <Icon name="bulb" />
-                <span className="sr-only">Your unfair advantage</span>
-                <input name="edge" placeholder="Your edge, like: nurse with 5 years of night shifts" autoComplete="off" />
-              </label>
-            </div>
-            <button className="gen-submit">
-              <span className="row gap-6">
-                Generate ideas <Icon name="arrow" />
-              </span>
-              <small>Free with an account</small>
-            </button>
-          </form>
         </section>
 
         {/* -------------------------------------------------------- features */}

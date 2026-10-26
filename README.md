@@ -7,8 +7,8 @@ A think tank for entrepreneurs. Capture ideas, validate them, and run each proje
 | Dashboard | Project | Notebook |
 | --- | --- | --- |
 | ![Dashboard](docs/screenshots/dashboard.png) | ![Project page](docs/screenshots/project.png) | ![Notebook](docs/screenshots/notebook.png) |
-| **Idea generator** | **Idea report** | **Community** |
-| ![Idea generator](docs/screenshots/generator.png) | ![Idea report](docs/screenshots/idea-report.png) | ![Community](docs/screenshots/community.png) |
+| **Dark mode** | **Idea report** | **Community** |
+| ![Dashboard in dark mode](docs/screenshots/dashboard-dark.png) | ![Idea report](docs/screenshots/idea-report.png) | ![Community](docs/screenshots/community.png) |
 
 ## What's inside
 
@@ -21,7 +21,6 @@ A think tank for entrepreneurs. Capture ideas, validate them, and run each proje
   - **Launchpad**: one-click links to GitHub, VS Code, Claude, ChatGPT, Gemini and any other tool. With GitHub connected you can pick a repository from a list, and the project also gets links to its issues, pull requests, github.dev and vscode.dev.
 - **Notebook**: a three-pane idea notebook with colors, a 1-3 "spark" rating, tags, pins, search, autosave, links to projects, and "Make it a project".
 - **Validation reports**: scores for opportunity, problem, feasibility and timing, plus business fit, an offer ladder, why now, risks, the cheapest tests to run, and a starter plan that becomes project sections.
-- **Idea generator**: an industry plus your edge gives five scored ideas. It uses Claude when an API key is set, and matches from the Idea Database when it isn't.
 - **Idea Database**: hand-written ideas with full reports, and an idea of the day.
 - **Community**: questions, ideas, wins and feedback requests, with upvotes and replies.
 - Light and dark themes, phone-friendly layouts.
@@ -63,7 +62,7 @@ Inside the iPhone app, Foundry uses a bottom tab bar, haptic feedback, a daily r
 | `DATABASE_URL` | yes | `file:./dev.db` locally. A Postgres URL in production. |
 | `AUTH_SECRET` | yes | A long random string. Encrypts stored GitHub tokens. |
 | `APP_URL` | yes | The public URL, used for the GitHub callback. |
-| `ANTHROPIC_API_KEY` | optional | Turns on the AI generator, validation reports, goal suggestions and plan drafting. |
+| `ANTHROPIC_API_KEY` | optional | Turns on validation reports for your own ideas, goal suggestions and plan drafting. Anthropic bills each request, so leave it unset to keep Foundry free to run. |
 | `FOUNDRY_AI_MODEL` | optional | Defaults to `claude-opus-5`. |
 | `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` | optional | Turns on "Continue with GitHub" and the repository picker. |
 | `DEV_DEMO_LOGIN` | dev only | `1` shows the demo login button. |
@@ -87,7 +86,7 @@ With the app running (`npm run dev`):
 
 | Command | What it does |
 | --- | --- |
-| `npm run test:e2e` | Drives a real headless Chrome through sign-up, projects, goals, the Launchpad, the notebook, the Idea Database, the generator and the community, checking each step against the database. The test account is deleted afterwards. |
+| `npm run test:e2e` | Drives a real headless Chrome through sign-up, projects, goals, the Launchpad, the notebook, the Idea Database and the community, checking each step against the database. The test account is deleted afterwards. |
 | `npm run screenshots` | Refreshes the images in `docs/screenshots`. Uses the demo account. |
 | `npm run typecheck` | Type-checks the code. |
 | `npm run licenses` | Regenerates `THIRD_PARTY_LICENSES.md` after packages change. |
@@ -119,7 +118,7 @@ prototype/                the first clickable prototype (the claude.ai version) 
 scripts/                  browser test, screenshot and license tools
 prisma/schema.prisma      data model (users, sessions, projects, sections, goals, links, ideas, posts, comments, votes)
 prisma/seed.mts           demo data for local development
-src/app/                  pages: landing, auth, /app (dashboard, notebook, generator, projects, settings), explore, community
+src/app/                  pages: landing, auth, /app (dashboard, notebook, projects, settings), explore, community
 src/app/api/              GitHub sign-in, GitHub repos, dev demo login
 src/actions/              server actions; every change checks that the signed-in user owns the data
 src/components/           UI; project/ holds the project page, sections and Launchpad

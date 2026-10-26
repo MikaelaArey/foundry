@@ -83,7 +83,9 @@ startup,entrepreneur,business ideas,idea notebook,goals,planner,side hustle,foun
 | Unrestricted web access | **No.** The app only opens Foundry; outside links open in an in-app browser on request. |
 | User-generated content | **Yes** (community posts and replies). Apple asks you to confirm you have reporting, blocking and moderation, which Foundry has. |
 | Messaging and chat | No |
-| Expected result | 12+ |
+| Social media | No (the community is one feature of a productivity app) |
+| Advertising, parental controls, age assurance, health topics, weapons, loot boxes | No / None |
+| Result | **13+**, set as an override. The answers alone give 4+, but the Terms of Use require users to be at least 13, so the store rating matches them. |
 
 ## App Privacy ("nutrition label")
 

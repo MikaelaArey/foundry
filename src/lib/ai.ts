@@ -3,13 +3,10 @@ import { betaZodOutputFormat } from "@anthropic-ai/sdk/helpers/beta/zod";
 import type { z } from "zod";
 import { KINDS, stageOf, type Kind } from "./constants";
 import {
-  GeneratedIdeasSchema,
   GoalsSchema,
   PlanSchema,
   ReportSchema,
-  cleanGeneratedIdea,
   cleanReport,
-  type GeneratedIdea,
   type Plan,
   type Report,
 } from "./schemas";
@@ -62,22 +59,6 @@ async function ask<T extends z.ZodType>(schema: T, prompt: string, effort: "low"
     if (e instanceof Anthropic.APIError) throw new AiError("failed", `Claude returned an error (${e.status ?? "network"}). Try again shortly.`);
     throw new AiError("failed", "Couldn't reach Claude. Check the server's internet connection.");
   }
-}
-
-export type GenerateParams = { industry: string; edge: string; risk: string; model: string; budget: string };
-
-export async function generateIdeas(p: GenerateParams): Promise<GeneratedIdea[]> {
-  const prompt = `Generate 5 distinct startup ideas.
-
-Industry or niche: ${p.industry || "any industry (surprise me)"}
-The founder's edge (skills, audience, experience): ${p.edge || "not given"}
-Risk appetite: ${p.risk} (Safe = proven models with clear demand, Bold = a fresh angle on a known need, Wild = unusual bets)
-Business model preference: ${p.model}
-Starting budget: ${p.budget}
-
-Make each idea specific enough to act on tomorrow: name a clear customer and what they pay for. If the founder described an edge, use it in at least three ideas. Avoid generic ideas like "AI assistant for X" unless the angle is sharp.`;
-  const out = await ask(GeneratedIdeasSchema, prompt, "medium");
-  return out.ideas.slice(0, 5).map(cleanGeneratedIdea);
 }
 
 export async function validateIdea(i: { title: string; body: string; tags: string[] }): Promise<Report> {

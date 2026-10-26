@@ -2,64 +2,13 @@
 
 import { db } from "@/lib/db";
 import { requireUser } from "@/lib/auth";
-import { AiError, aiConfigured, draftPlan, generateIdeas, suggestGoals } from "@/lib/ai";
+import { AiError, draftPlan, suggestGoals } from "@/lib/ai";
 import { KIND_KEYS, type Kind } from "@/lib/constants";
-import { matchIdeas, overallScore } from "@/lib/idea-db";
 import { allow } from "@/lib/ratelimit";
-import type { GeneratedIdea, Plan } from "@/lib/schemas";
-
-export type GeneratedCard = GeneratedIdea & { slug?: string };
+import type { Plan } from "@/lib/schemas";
 
 const aiQuota = (userId: string) => allow(`ai:${userId}`, 20, 60 * 60 * 1000);
 const errorText = (e: unknown) => (e instanceof AiError ? e.message : "Something went wrong. Try again.");
-
-export async function generateIdeasAction(params: {
-  industry: string;
-  edge: string;
-  risk: string;
-  model: string;
-  budget: string;
-}): Promise<{ ideas: GeneratedCard[]; source: "ai" | "database"; notice?: string; error?: string }> {
-  const user = await requireUser();
-  const p = {
-    industry: String(params.industry ?? "").slice(0, 120),
-    edge: String(params.edge ?? "").slice(0, 200),
-    risk: ["Safe", "Bold", "Wild"].includes(params.risk) ? params.risk : "Bold",
-    model: String(params.model ?? "Any").slice(0, 40),
-    budget: String(params.budget ?? "Any").slice(0, 40),
-  };
-
-  if (aiConfigured()) {
-    if (!aiQuota(user.id)) return { ideas: [], source: "ai", error: "You've generated a lot this hour. Try again in a little while." };
-    try {
-      return { ideas: await generateIdeas(p), source: "ai" };
-    } catch (e) {
-      if (!(e instanceof AiError) || e.code !== "not_configured") return { ideas: [], source: "ai", error: errorText(e) };
-    }
-  }
-
-  // No AI key on this server: suggest the closest ideas from the Idea Database.
-  const ideas = matchIdeas(`${p.industry} ${p.edge}`).map<GeneratedCard>((i) => ({
-    slug: i.slug,
-    title: i.title,
-    pitch: i.tagline,
-    audience: i.report.audience,
-    category: i.category,
-    potential: overallScore(i.report),
-    difficulty: i.report.difficulty.score <= 4 ? "Easy" : i.report.difficulty.score <= 6 ? "Medium" : "Hard",
-    market: i.market,
-    whyItWorks: i.report.whyNow,
-    firstStep: i.report.experiments[0] ?? "",
-  }));
-  return {
-    ideas,
-    source: "database",
-    notice:
-      process.env.NODE_ENV === "production"
-        ? "These ideas come from the Foundry Idea Database. Open one to read its full report."
-        : "Showing the closest matches from the Idea Database. Add ANTHROPIC_API_KEY to .env to generate fresh ideas with Claude.",
-  };
-}
 
 export async function suggestGoalsAction(sectionId: string): Promise<{ goals?: string[]; error?: string }> {
   const user = await requireUser();

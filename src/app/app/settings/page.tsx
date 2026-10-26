@@ -113,7 +113,7 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
                   <b>Claude</b>
                   <span className="small soft">
                     {aiConfigured()
-                      ? "AI features are on: the idea generator, validation reports and goal suggestions."
+                      ? "AI features are on: validation reports, goal suggestions and plan drafts."
                       : "AI features are off. Add ANTHROPIC_API_KEY to .env to turn them on."}
                   </span>
                 </div>

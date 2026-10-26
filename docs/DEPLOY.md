@@ -50,7 +50,7 @@ Add these under **Project → Settings → Environment Variables**, then redeplo
 | Name | What it does |
 | --- | --- |
 | `APP_URL` | Your site's address. Needed for GitHub sign-in on the website. |
-| `ANTHROPIC_API_KEY` | Turns on the AI features: the idea generator, validation reports and goal suggestions. |
+| `ANTHROPIC_API_KEY` | Turns on the AI features: validation reports for your own ideas, goal suggestions and plan drafts. Anthropic bills each request, so leave it out to keep Foundry free to run. |
 | `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` | GitHub sign-in on the website and the repository picker. Create an OAuth app at https://github.com/settings/developers with the callback URL `https://YOUR-ADDRESS/api/auth/github/callback`. |
 
 Never add `DEV_DEMO_LOGIN`. The demo login is for your Mac only.
