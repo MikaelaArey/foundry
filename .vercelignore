@@ -1,0 +1,15 @@
+# Never upload local secrets, local databases or large files the website doesn't need.
+.env
+.env.*
+!.env.example
+vercel-settings.env
+prisma/*.db
+prisma/*.db-journal
+prisma/postgres/
+node_modules
+.next
+ios
+mobile/assets
+prototype
+docs/screenshots
+docs/app-store/screenshots
