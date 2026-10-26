@@ -49,10 +49,10 @@ Enroll at https://developer.apple.com/programs/enroll/ with your Apple Account. 
 
 ### 4. Point the app at the live site
 
-Replace the address with yours:
+Foundry is live at https://foundry-founders.vercel.app, and the iPhone project already points there. If the address ever changes, run:
 
 ```bash
-FOUNDRY_APP_URL=https://your-domain npm run ios:sync
+FOUNDRY_APP_URL=https://foundry-founders.vercel.app npm run ios:sync
 npm run ios:open
 ```
 

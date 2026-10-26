@@ -18,13 +18,11 @@ Everything to paste into App Store Connect, in the order the forms ask for it. C
 
 ## URLs
 
-Replace `YOUR-DOMAIN` with the address from the deploy guide.
-
 | Field | Value |
 | --- | --- |
-| Support URL | `https://YOUR-DOMAIN/support` |
-| Marketing URL (optional) | `https://YOUR-DOMAIN` |
-| Privacy Policy URL | `https://YOUR-DOMAIN/privacy` |
+| Support URL | `https://foundry-founders.vercel.app/support` |
+| Marketing URL (optional) | `https://foundry-founders.vercel.app` |
+| Privacy Policy URL | `https://foundry-founders.vercel.app/privacy` |
 
 ## Promotional text (170)
 
@@ -105,7 +103,7 @@ Everything else (location, contacts, health, financial info, browsing history, u
 | Field | Value |
 | --- | --- |
 | Sign-in required | Yes |
-| Demo account | Create a real account on the live site for Apple, for example `appreview@YOUR-DOMAIN`, and add a sample project and idea. Don't use the local demo account; it only exists on your Mac. |
+| Demo account | Create a real account on https://foundry-founders.vercel.app for Apple, for example `areybusiness23+appreview@gmail.com` (the `+appreview` part still delivers to your inbox), and add a sample project and idea. Don't use the local demo account; it only exists on your Mac. |
 | Contact | Your name, phone and email |
 
 **Notes for the reviewer** (paste as is, after filling in the demo account):

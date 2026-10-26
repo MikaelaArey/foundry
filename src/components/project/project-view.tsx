@@ -318,7 +318,9 @@ export function ProjectView({
             {ideas.map((i) => (
               <Link key={i.id} href={`/app/notebook?id=${i.id}`} className="nb-item card-hover" style={{ ["--paper" as string]: `var(--n-${i.color})`, border: "1px solid var(--line)" }}>
                 <b>{i.title}</b>
-                <span className="nb-item-meta">Edited {timeAgo(i.updatedAt)}</span>
+                <span className="nb-item-meta" suppressHydrationWarning>
+                  Edited {timeAgo(i.updatedAt)}
+                </span>
               </Link>
             ))}
           </div>

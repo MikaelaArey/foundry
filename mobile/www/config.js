@@ -1,1 +1,1 @@
-window.FOUNDRY_APP_URL = "http://localhost:3000";
+window.FOUNDRY_APP_URL = "https://foundry-founders.vercel.app";

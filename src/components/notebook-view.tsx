@@ -252,7 +252,9 @@ export function NotebookView({
                       {"●".repeat(i.spark)}
                     </span>
                     {i.report ? <span className="chip chip-good" style={{ height: 18, fontSize: 10.5 }}>Validated</span> : null}
-                    <span style={{ marginLeft: "auto" }}>{timeAgo(i.updatedAt)}</span>
+                    <span style={{ marginLeft: "auto" }} suppressHydrationWarning>
+                      {timeAgo(i.updatedAt)}
+                    </span>
                   </span>
                 </button>
               ))
