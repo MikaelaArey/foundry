@@ -810,7 +810,7 @@ p {
 }
 .hero-visual {
   position: relative;
-  min-height: 460px;
+  min-height: 520px;
 }
 .mock {
   position: absolute;
@@ -835,6 +835,10 @@ p {
   left: 20px;
   top: 300px;
   transform: rotate(-2deg);
+}
+/* The captions change with the idea of the day; leaving them out keeps the card one height. */
+.mock-scores .score-val span {
+  display: none;
 }
 .float {
   animation: float 7s ease-in-out infinite;
@@ -2674,9 +2678,6 @@ p {
   .hero-grid {
     grid-template-columns: minmax(0, 1fr);
   }
-  .hero-visual {
-    min-height: 420px;
-  }
   .features,
   .idea-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2778,12 +2779,16 @@ p {
   .header-actions .hide-sm {
     display: none;
   }
+  /* Phones show only the project card, in the normal flow, so nothing overlaps. */
   .hero-visual {
-    min-height: 380px;
-    transform: scale(0.92);
-    transform-origin: top left;
+    min-height: 0;
   }
-  .mock-note {
+  .mock-project {
+    position: relative;
+    inset: auto;
+  }
+  .mock-note,
+  .mock-scores {
     display: none;
   }
 }
