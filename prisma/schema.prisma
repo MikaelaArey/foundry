@@ -1,0 +1,190 @@
+// Foundry data model.
+// Local development uses SQLite. For production, switch `provider` to
+// "postgresql" and point DATABASE_URL at a hosted Postgres database.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String?
+  name         String
+  handle       String    @unique
+  bio          String    @default("")
+  githubId     String?   @unique
+  githubLogin  String?
+  githubToken  String? // AES-256-GCM encrypted with AUTH_SECRET
+  termsAcceptedAt DateTime?
+  bannedAt     DateTime? // set by a moderator; banned people can't post or comment
+  createdAt    DateTime  @default(now())
+  sessions     Session[]
+  projects     Project[]
+  ideas        Idea[]
+  posts        Post[]
+  comments     Comment[]
+  votes        Vote[]
+  reports      Report[]  @relation("reporter")
+  blocking     Block[]   @relation("blocker")
+  blockedBy    Block[]   @relation("blocked")
+}
+
+model Session {
+  id        String   @id // sha256 of the cookie token
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Project {
+  id        String        @id @default(cuid())
+  userId    String
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  pitch     String        @default("")
+  stage     String        @default("spark")
+  parked    Boolean       @default(false)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  sections  Section[]
+  links     ProjectLink[]
+  ideas     Idea[]
+
+  @@index([userId])
+}
+
+model Section {
+  id        String  @id @default(cuid())
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  kind      String
+  name      String
+  position  Int     @default(0)
+  goals     Goal[]
+
+  @@index([projectId])
+}
+
+model Goal {
+  id        String    @id @default(cuid())
+  sectionId String
+  section   Section   @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  text      String
+  done      Boolean   @default(false)
+  doneAt    DateTime?
+  position  Int       @default(0)
+  createdAt DateTime  @default(now())
+
+  @@index([sectionId])
+}
+
+model ProjectLink {
+  id        String  @id @default(cuid())
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  kind      String // github | vscode | claude | chatgpt | gemini | custom
+  label     String
+  url       String
+  position  Int     @default(0)
+
+  @@index([projectId])
+}
+
+model Idea {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  body      String   @default("")
+  tags      String   @default("") // comma separated, lowercase
+  spark     Int      @default(1) // 1 maybe, 2 promising, 3 hot
+  color     String   @default("none")
+  pinned    Boolean  @default(false)
+  source    String   @default("note") // note | generated | database
+  report    String? // JSON validation report
+  projectId String?
+  project   Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model Post {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  kind      String // question | idea | win | feedback
+  title     String
+  body      String
+  tags      String    @default("")
+  hidden    Boolean   @default(false) // removed by moderation or by too many reports
+  createdAt DateTime  @default(now())
+  comments  Comment[]
+  votes     Vote[]
+  reports   Report[]
+
+  @@index([createdAt])
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  body      String
+  hidden    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  reports   Report[]
+
+  @@index([postId])
+}
+
+model Vote {
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@id([userId, postId])
+  @@index([postId])
+}
+
+/// A report about a post or comment, reviewed on the moderation page.
+model Report {
+  id         String   @id @default(cuid())
+  reporterId String
+  reporter   User     @relation("reporter", fields: [reporterId], references: [id], onDelete: Cascade)
+  postId     String?
+  post       Post?    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  commentId  String?
+  comment    Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  reason     String
+  details    String   @default("")
+  status     String   @default("open") // open | removed | dismissed
+  createdAt  DateTime @default(now())
+
+  @@index([status])
+}
+
+/// One person hiding another person's posts and comments.
+model Block {
+  blockerId String
+  blocker   User     @relation("blocker", fields: [blockerId], references: [id], onDelete: Cascade)
+  blockedId String
+  blocked   User     @relation("blocked", fields: [blockedId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@id([blockerId, blockedId])
+}

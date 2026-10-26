@@ -1,0 +1,1634 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Foundry Think Tank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Caveat:wght@600;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --paper:#F2F4F8; --grid:rgba(20,29,51,.05); --surface:#FFFFFF; --surface-2:#F5F7FB;
+  --line:#DCE2EC; --line-strong:#B8C2D4;
+  --ink:#141D33; --ink-2:#48536D; --ink-3:#737E97;
+  --hl:#FFD43B; --hl-ink:#2A2100; --hl-soft:#FFF4C4; --hl-mark:#FFD43B;
+  --btn:#141D33; --btn-ink:#FFFFFF; --btn-hover:#27324F;
+  --focus:#2a78d6;
+  --note:#FFF6CC; --note-ink:#2B2610; --note-tag:rgba(90,70,0,.1); --note-rule:rgba(90,70,0,.18);
+  --spark:#B87100;
+  --track:#E6EAF1; --bar-muted:#AAB4C8;
+  --good:#0ca30c; --warn:#fab219; --critical:#d03b3b;
+  --c-coding:#2a78d6; --c-marketing:#eb6834; --c-product:#1baf7a; --c-finance:#eda100;
+  --c-design:#e87ba4; --c-operations:#008300; --c-sales:#4a3aa7; --c-legal:#e34948; --c-custom:#66718C;
+  --on-coding:#fff; --on-marketing:#fff; --on-product:#141D33; --on-finance:#141D33;
+  --on-design:#141D33; --on-operations:#fff; --on-sales:#fff; --on-legal:#fff; --on-custom:#fff;
+  --shadow:0 1px 2px rgba(20,29,51,.05),0 8px 20px -10px rgba(20,29,51,.16);
+  --shadow-lg:0 30px 70px -20px rgba(10,16,30,.45);
+  --scrim:rgba(10,16,30,.5);
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --f-hand:"Caveat","Bradley Hand","Segoe Print","Comic Sans MS",cursive;
+  --side-w:256px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#0C1528; --grid:rgba(120,150,210,.07); --surface:#121E36; --surface-2:#172643;
+    --line:#233459; --line-strong:#344A78;
+    --ink:#E6ECF8; --ink-2:#B0BBD3; --ink-3:#8290AE;
+    --hl:#FFD43B; --hl-ink:#2A2100; --hl-soft:#35300F; --hl-mark:rgba(255,212,59,.34);
+    --btn:#E6ECF8; --btn-ink:#0C1528; --btn-hover:#FFFFFF;
+    --focus:#6da7ec;
+    --note:#2A2715; --note-ink:#F3EAC5; --note-tag:rgba(255,230,140,.12); --note-rule:rgba(255,230,140,.16);
+    --spark:#FFD43B;
+    --track:#1E2D4E; --bar-muted:#46577F;
+    --c-coding:#3987e5; --c-marketing:#d95926; --c-product:#199e70; --c-finance:#c98500;
+    --c-design:#d55181; --c-operations:#008300; --c-sales:#9085e9; --c-legal:#e66767; --c-custom:#8C97B3;
+    --on-coding:#fff; --on-marketing:#fff; --on-product:#fff; --on-finance:#0C1528;
+    --on-design:#fff; --on-operations:#fff; --on-sales:#0C1528; --on-legal:#0C1528; --on-custom:#0C1528;
+    --shadow:0 1px 2px rgba(0,0,0,.35),0 10px 24px -12px rgba(0,0,0,.5);
+    --scrim:rgba(3,7,16,.65);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#0C1528; --grid:rgba(120,150,210,.07); --surface:#121E36; --surface-2:#172643;
+  --line:#233459; --line-strong:#344A78;
+  --ink:#E6ECF8; --ink-2:#B0BBD3; --ink-3:#8290AE;
+  --hl:#FFD43B; --hl-ink:#2A2100; --hl-soft:#35300F; --hl-mark:rgba(255,212,59,.34);
+  --btn:#E6ECF8; --btn-ink:#0C1528; --btn-hover:#FFFFFF;
+  --focus:#6da7ec;
+  --note:#2A2715; --note-ink:#F3EAC5; --note-tag:rgba(255,230,140,.12); --note-rule:rgba(255,230,140,.16);
+  --spark:#FFD43B;
+  --track:#1E2D4E; --bar-muted:#46577F;
+  --c-coding:#3987e5; --c-marketing:#d95926; --c-product:#199e70; --c-finance:#c98500;
+  --c-design:#d55181; --c-operations:#008300; --c-sales:#9085e9; --c-legal:#e66767; --c-custom:#8C97B3;
+  --on-coding:#fff; --on-marketing:#fff; --on-product:#fff; --on-finance:#0C1528;
+  --on-design:#fff; --on-operations:#fff; --on-sales:#0C1528; --on-legal:#0C1528; --on-custom:#0C1528;
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 10px 24px -12px rgba(0,0,0,.5);
+  --scrim:rgba(3,7,16,.65);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;color:var(--ink);font:400 14px/1.5 var(--f-body);-webkit-font-smoothing:antialiased;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:inherit}
+h1,h2,h3{text-wrap:balance}
+.ic{width:18px;height:18px;flex:none}
+.ic.fill{fill:currentColor;stroke:none}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.muted{color:var(--ink-3)}
+.small{font-size:12px}
+.hlmark{background:linear-gradient(transparent 60%,var(--hl-mark) 60%,var(--hl-mark) 92%,transparent 92%);padding:0 .08em;color:inherit;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+
+/* ---------- shell ---------- */
+.app{display:grid;grid-template-columns:var(--side-w) minmax(0,1fr);min-height:100%}
+.side{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;
+  height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));
+  overflow-y:auto;background:var(--surface);border-right:1px solid var(--line);
+  padding:20px 14px;display:flex;flex-direction:column;gap:18px}
+.main{min-width:0;padding-block:32px 88px;padding-inline:clamp(16px,4vw,48px)}
+.main:focus{outline:none}
+.main-inner{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+.topbar{display:none}
+.nav-scrim{display:none}
+
+.brand{display:flex;align-items:center;gap:11px;padding:0 6px}
+.logo{width:38px;height:38px;border-radius:10px;background:var(--hl);color:var(--hl-ink);display:grid;place-items:center;transform:rotate(-5deg);flex:none}
+.logo .ic{width:20px;height:20px}
+.wordmark{display:block;font:800 23px/1 var(--f-display);letter-spacing:-.025em}
+.brand small{display:block;color:var(--ink-3);font-size:12px;margin-top:4px}
+.side-actions{display:grid;gap:8px}
+.nav{display:grid;gap:2px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;text-decoration:none;font-weight:600;color:var(--ink-2)}
+.nav-item:hover{background:var(--surface-2);color:var(--ink)}
+.nav-item.on{background:var(--paper);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.count{margin-left:auto;font:500 12px/1 var(--f-mono);color:var(--ink-3);font-variant-numeric:tabular-nums}
+.side-label{display:flex;align-items:center;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);padding:0 10px}
+.sp-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.sp{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 8px;padding:8px 10px;border-radius:8px;text-decoration:none}
+.sp:hover{background:var(--surface-2)}
+.sp.on{background:var(--paper);box-shadow:inset 0 0 0 1px var(--line)}
+.sp-name{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sp-pct{font:500 12px/1.6 var(--f-mono);color:var(--ink-3);font-variant-numeric:tabular-nums}
+.sp .bar{grid-column:1/-1;height:4px}
+.side-empty{margin:0;padding:0 10px;color:var(--ink-3);font-size:13px}
+.parked summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);padding:4px 10px}
+.parked summary::-webkit-details-marker{display:none}
+.parked summary::before{content:"▸";font-size:10px;transition:transform .15s}
+.parked[open] summary::before{transform:rotate(90deg)}
+.parked .sp-list{margin-top:4px}
+.side-foot{margin-top:auto;padding:10px 10px 0;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3);display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--good);flex:none}
+.dot.warn{background:var(--warn)}
+.dot.bad{background:var(--critical)}
+
+/* ---------- controls ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 14px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface);font-weight:600;font-size:14px;cursor:pointer;white-space:nowrap;text-decoration:none;transition:background-color .15s,border-color .15s,transform .1s}
+.btn:hover{border-color:var(--ink-3)}
+.btn:active{transform:translateY(1px)}
+.btn .ic{width:16px;height:16px}
+.btn.primary{background:var(--btn);border-color:var(--btn);color:var(--btn-ink)}
+.btn.primary:hover{background:var(--btn-hover);border-color:var(--btn-hover)}
+.btn.hl{background:var(--hl);border-color:var(--hl);color:var(--hl-ink)}
+.btn.hl:hover{border-color:var(--hl-ink)}
+.btn.ghost{background:transparent;border-color:transparent;color:var(--ink-2)}
+.btn.ghost:hover{background:var(--surface-2);color:var(--ink)}
+.btn.danger{background:var(--critical);border-color:var(--critical);color:#fff}
+.btn.sm{min-height:32px;padding:0 11px;font-size:13px;border-radius:8px}
+.btn[disabled]{opacity:.55;cursor:default}
+.icon-btn{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:8px;border:0;background:transparent;color:var(--ink-2);cursor:pointer;flex:none}
+.icon-btn:hover{background:var(--surface-2);color:var(--ink)}
+.icon-btn .ic{width:16px;height:16px}
+.icon-btn[aria-pressed="true"]{color:var(--ink);background:var(--hl-soft)}
+.linkish{border:0;background:none;padding:0;color:var(--ink-2);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line-strong);cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-size:13px}
+.linkish:hover{color:var(--ink);text-decoration-color:currentColor}
+.linkish .ic{width:15px;height:15px}
+input:not([type=checkbox]):not([type=radio]),select,textarea{width:100%;min-height:38px;padding:8px 12px;border:1px solid var(--line-strong);border-radius:9px;background:var(--surface);color:var(--ink)}
+textarea{resize:vertical;line-height:1.5}
+input::placeholder,textarea::placeholder{color:var(--ink-3)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--focus);box-shadow:0 0 0 3px rgba(42,120,214,.22)}
+.row{display:flex;gap:8px;align-items:center}
+.row>input{flex:1;min-width:0}
+label.check{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2);cursor:pointer}
+label.check input{width:16px;height:16px;accent-color:var(--ink)}
+.chip{display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 8px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.03em;border:1px solid var(--line-strong);color:var(--ink-2);background:var(--surface);white-space:nowrap}
+.chip.ex{border-style:dashed}
+.chip.stage{background:var(--hl-soft);border-color:transparent;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.err{margin:0;color:var(--critical);font-size:13px;font-weight:600}
+.hint{margin:0;color:var(--ink-3);font-size:12px}
+
+/* ---------- page heads ---------- */
+.page-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px}
+.eyebrow{margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+.h-page{margin:0;font:800 clamp(30px,4.4vw,46px)/1.04 var(--f-display);letter-spacing:-.03em}
+.lede{margin:10px 0 0;color:var(--ink-2);font-size:15px;max-width:62ch}
+.head-actions{display:flex;gap:8px;flex-wrap:wrap}
+.h2{margin:0;font:700 19px/1.2 var(--f-display);letter-spacing:-.01em}
+.sec-title{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px;margin-bottom:14px}
+.panel-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:4px 10px}
+.card,.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+.panel{padding:16px;display:grid;gap:12px}
+.card{padding:18px}
+
+.banner{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;background:var(--hl-soft);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.banner p{margin:0;max-width:78ch;font-size:13px}
+.confirm{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--critical);border-radius:10px;padding:10px 14px;background:var(--surface)}
+.confirm p{margin:0;font-size:13px;font-weight:600}
+
+/* ---------- bars ---------- */
+.bar{display:block;height:6px;border-radius:6px;background:var(--track);overflow:hidden}
+.bar>i{display:block;height:100%;border-radius:6px;background:var(--c,var(--ink));transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.bar.thick{height:10px}
+.seg{display:flex;height:10px;border-radius:6px;background:var(--track);overflow:hidden}
+.seg>i{display:block;height:100%;border-right:2px solid var(--surface);flex:none}
+.seg-big{height:16px;border-radius:8px}
+
+/* ---------- HQ ---------- */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.kpis>div{padding:14px 18px;border-left:1px solid var(--line)}
+.kpis>div:first-child{border-left:0}
+.kpis dt{font-size:12px;color:var(--ink-3);font-weight:600}
+.kpis dd{margin:4px 0 0;font:700 26px/1.1 var(--f-mono);font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.kpis dd small{font-size:14px;color:var(--ink-3);font-weight:500;margin-left:5px;letter-spacing:0}
+.hq-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start}
+.hq-side{display:grid;gap:16px}
+.p-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.p-card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow);transition:border-color .15s,transform .15s}
+.p-card:hover{border-color:var(--line-strong);transform:translateY(-2px)}
+.pc-top{display:flex;gap:6px;flex-wrap:wrap}
+.pc-name{margin:0;font:700 19px/1.2 var(--f-display);letter-spacing:-.01em}
+.pc-link{text-decoration:none}
+.pc-link::after{content:"";position:absolute;inset:0;border-radius:14px}
+.pc-link:focus-visible{outline:none}
+.pc-link:focus-visible::after{outline:2px solid var(--focus);outline-offset:2px}
+.pc-pitch{margin:0;color:var(--ink-2);font-size:13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pc-overall{display:flex;align-items:baseline;gap:8px}
+.pc-pct{font:700 24px/1 var(--f-mono);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.pc-of{font-size:12px;color:var(--ink-3)}
+.mini-secs{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.mini-secs li{display:grid;grid-template-columns:minmax(0,92px) 1fr 36px;align-items:center;gap:8px;font-size:12px}
+.ms-name{color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ms-pct{font:500 11px var(--f-mono);color:var(--ink-3);text-align:right;font-variant-numeric:tabular-nums}
+.mini-secs li.ms-more{display:block;color:var(--ink-3)}
+.pc-links{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:4px}
+.mini-tool{width:32px;height:32px;display:grid;place-items:center;border-radius:8px;border:1px solid var(--line);color:var(--ink-2);background:var(--surface-2)}
+.mini-tool:hover{color:var(--ink);border-color:var(--ink-3)}
+.mini-tool .ic{width:16px;height:16px}
+.p-card.new{align-items:flex-start;justify-content:center;border:1.5px dashed var(--line-strong);background:transparent;box-shadow:none;cursor:pointer;text-align:left;color:var(--ink-2);min-height:190px;font-size:13px}
+.p-card.new b{font:700 17px/1.2 var(--f-display);color:var(--ink)}
+.p-card.new:hover{background:var(--surface)}
+.hq-parked summary{cursor:pointer;font-weight:600;color:var(--ink-2);margin:18px 0 12px}
+.nextup{list-style:none;margin:0 -8px;padding:0;display:grid}
+.nu-meta{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-3);margin-top:2px}
+.swatch{width:12px;height:12px;border-radius:4px;background:var(--c);flex:none}
+.swatch.sm{width:8px;height:8px;border-radius:3px}
+.mom{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;height:132px}
+.mom-y{display:flex;flex-direction:column;justify-content:space-between;font:500 10px/1 var(--f-mono);color:var(--ink-3);padding-bottom:20px;text-align:right}
+.mom-plot{display:grid;grid-template-rows:1fr auto;min-width:0}
+.mom-bars{display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:3px;align-items:end;border-bottom:1px solid var(--line-strong);background-image:linear-gradient(var(--line) 1px,transparent 1px);background-size:100% 50%}
+.mom-col{height:100%;display:flex;align-items:flex-end;outline-offset:1px;border-radius:4px}
+.mom-col>i{display:block;width:100%;background:var(--bar-muted);border-radius:4px 4px 0 0}
+.mom-col.today>i{background:var(--ink)}
+.mom-col:hover>i{background:var(--ink-2)}
+.mom-x{display:flex;justify-content:space-between;font:500 10px/1 var(--f-mono);color:var(--ink-3);padding-top:6px}
+.sparks{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.sparks li{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:6px 10px;border-radius:8px;background:var(--note);color:var(--note-ink)}
+.spark-t{font:700 20px/1.1 var(--f-hand);overflow-wrap:anywhere}
+.sparks .muted{color:var(--note-ink);opacity:.65;white-space:nowrap}
+
+/* ---------- goals (shared) ---------- */
+.k-coding{--c:var(--c-coding);--on:var(--on-coding)}
+.k-marketing{--c:var(--c-marketing);--on:var(--on-marketing)}
+.k-product{--c:var(--c-product);--on:var(--on-product)}
+.k-finance{--c:var(--c-finance);--on:var(--on-finance)}
+.k-design{--c:var(--c-design);--on:var(--on-design)}
+.k-operations{--c:var(--c-operations);--on:var(--on-operations)}
+.k-sales{--c:var(--c-sales);--on:var(--on-sales)}
+.k-legal{--c:var(--c-legal);--on:var(--on-legal)}
+.k-custom{--c:var(--c-custom);--on:var(--on-custom)}
+.goal{position:relative;display:flex;align-items:flex-start;gap:2px;border-radius:8px}
+.goal:hover{background:var(--surface-2)}
+.cb{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.goal-label{flex:1;display:flex;gap:10px;align-items:flex-start;padding:7px 8px;cursor:pointer;min-width:0}
+.box{flex:none;width:20px;height:20px;border-radius:6px;border:2px solid var(--line-strong);display:grid;place-items:center;background:var(--surface);transition:background-color .15s,border-color .15s}
+.box .ic{width:14px;height:14px;stroke-width:3;opacity:0;color:var(--on)}
+.goal-label:hover .box{border-color:var(--c)}
+.cb:checked+.goal-label .box{background:var(--c);border-color:var(--c)}
+.cb:checked+.goal-label .box .ic{opacity:1}
+.cb:focus-visible+.goal-label .box{outline:2px solid var(--focus);outline-offset:2px}
+.gt{display:block;line-height:20px;overflow-wrap:anywhere}
+.goal.done .gt{color:var(--ink-3);text-decoration:line-through;text-decoration-color:var(--ink-3)}
+.goal-actions{display:flex;opacity:0;padding-top:2px}
+.goal:hover .goal-actions,.goal:focus-within .goal-actions{opacity:1}
+@media (hover:none){.goal-actions{opacity:1}}
+.goal.editing form{flex:1;display:flex;gap:6px;padding:4px}
+.goal.editing input{flex:1;min-width:0}
+
+/* ---------- project ---------- */
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink-3);min-width:0}
+.crumbs a{color:var(--ink-2);font-weight:600;text-decoration:none}
+.crumbs a:hover{text-decoration:underline}
+.crumbs span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.p-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-top:-12px}
+.p-title{display:grid;gap:10px;min-width:0}
+.p-title .lede{margin:0}
+.edit-form{display:grid;gap:10px;width:100%;max-width:640px}
+.edit-form label{display:grid;gap:4px;font-size:12px;font-weight:700;color:var(--ink-2)}
+.stages{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.stage-btn{width:100%;height:100%;display:flex;gap:10px;align-items:center;text-align:left;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface);cursor:pointer}
+.stage-btn:hover{border-color:var(--line-strong)}
+.stage-n{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:700 11px/1 var(--f-mono);border:1.5px solid var(--line-strong);color:var(--ink-3);flex:none}
+.stage-btn b{display:block;font-size:13px}
+.stage-btn small{display:block;font-size:11px;color:var(--ink-3);line-height:1.3}
+.stage-btn.past .stage-n{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.stage-btn.now{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.stage-btn.now .stage-n{background:var(--hl);border-color:var(--hl);color:var(--hl-ink)}
+.p-top{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:16px;align-items:start}
+.overview{display:grid;gap:12px}
+.ov-row{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.ov-pct{font:700 52px/.9 var(--f-mono);letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.ov-pct small{font-size:24px;letter-spacing:0;margin-left:2px}
+.ov-of{margin:0;color:var(--ink-2);font-size:13px;text-align:right}
+.ov-of b{color:var(--ink)}
+.legend{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--ink-2)}
+.legend li{display:flex;align-items:center;gap:6px}
+.legend b{font:500 12px var(--f-mono);color:var(--ink)}
+.label{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+.launchpad{display:grid;gap:12px}
+.launch{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:8px}
+.tool{position:relative;display:flex;align-items:center;border-radius:10px;min-height:56px;text-align:left;min-width:0}
+.tool.on{background:var(--surface);border:1px solid var(--line-strong)}
+.tool.on:hover{border-color:var(--ink-3)}
+.tool.off{background:transparent;border:1.5px dashed var(--line-strong);color:var(--ink-2);cursor:pointer;padding:8px 12px;gap:10px}
+.tool.off:hover{border-color:var(--ink-3);color:var(--ink);background:var(--surface-2)}
+.tool-main{flex:1;display:flex;align-items:center;gap:10px;padding:8px 4px 8px 12px;text-decoration:none;min-width:0}
+.tool-ic{width:32px;height:32px;border-radius:8px;display:grid;place-items:center;background:var(--paper);flex:none}
+.tool-ic .ic{width:17px;height:17px}
+.tool.on .tool-ic{background:var(--ink);color:var(--surface)}
+.tool-txt{display:flex;flex-direction:column;min-width:0;flex:1}
+.tool-txt b{font-size:13px;line-height:1.3}
+.tool-txt small{font-size:11px;color:var(--ink-3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tool-go{color:var(--ink-3);display:grid;place-items:center}
+.tool-go .ic{width:15px;height:15px}
+.tool .tool-edit{margin-right:4px}
+.gh-extra{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:12px}
+.gh-extra a{color:var(--ink-2);font-weight:600}
+.link-form{display:grid;gap:8px;border:1px solid var(--line);background:var(--surface-2);border-radius:10px;padding:12px}
+.secs{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;align-items:start}
+.sec{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.sec-top{padding:12px 10px 14px 16px;display:grid;gap:10px;background:var(--surface-2);background:color-mix(in oklab,var(--c) 11%,var(--surface));border-bottom:1px solid var(--line)}
+.sec-head{display:flex;align-items:center;gap:4px;min-width:0}
+.sec-head h3{margin:0;flex:1;min-width:0;display:flex;align-items:center;gap:9px;font:700 17px/1.2 var(--f-display)}
+.sec-head h3 span.nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sec-head form{flex:1;display:flex;gap:6px;min-width:0}
+.sec-head form input{flex:1;min-width:0}
+.sec-count{font:500 12px var(--f-mono);color:var(--ink-2);margin-right:4px;font-variant-numeric:tabular-nums}
+.sec-progress{display:flex;align-items:center;gap:10px;padding-right:6px}
+.sec-progress .bar{flex:1}
+.sec-pct{font:700 13px/1 var(--f-mono);min-width:52px;text-align:right;display:inline-flex;align-items:center;gap:4px;justify-content:flex-end;font-variant-numeric:tabular-nums}
+.sec-pct .ic{width:15px;height:15px;stroke-width:2.6;color:var(--good)}
+.goals{list-style:none;margin:0;padding:8px 8px 4px;display:grid}
+.sec-empty{margin:0;padding:10px 16px 0;color:var(--ink-3);font-size:13px}
+.add-goal{display:flex;gap:8px;padding:6px 16px 12px}
+.add-goal input{flex:1;min-width:0}
+.sec-foot{padding:0 16px 14px}
+.sec .confirm{margin:10px 12px 0}
+.suggest{margin:0 12px 14px;border:1px solid var(--line);border-radius:10px;padding:12px;display:grid;gap:8px;background:var(--surface-2)}
+.suggest ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.suggest li{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px}
+.add-sec-btn{border:1.5px dashed var(--line-strong);background:transparent;box-shadow:none;align-items:flex-start;justify-content:center;gap:4px;padding:18px;cursor:pointer;min-height:160px;text-align:left;color:var(--ink-2);font-size:13px}
+.add-sec-btn b{font:700 17px/1.2 var(--f-display);color:var(--ink)}
+.add-sec-btn:hover{background:var(--surface)}
+.add-sec{padding:14px 16px;gap:12px}
+.add-sec .sec-head h3{font-size:16px}
+.kind-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.kind{display:grid;grid-template-columns:auto 1fr;gap:0 8px;align-items:center;text-align:left;padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface);cursor:pointer}
+.kind:hover{border-color:var(--c)}
+.kind b{font-size:13px}
+.kind small{grid-column:2;font-size:11px;color:var(--ink-3);line-height:1.3}
+
+/* ---------- notebook ---------- */
+.capture{display:grid;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+.cap-prompt{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 14px}
+.cap-q{display:flex;align-items:center;gap:8px;font:700 22px/1.15 var(--f-hand);color:var(--ink)}
+.cap-q .ic{color:var(--spark);width:16px;height:16px}
+.capture textarea{min-height:84px;font-size:15px}
+.cap-row{display:grid;grid-template-columns:minmax(0,1.2fr) auto minmax(0,1fr) auto;gap:8px;align-items:center}
+.spark-pick{display:inline-flex;align-items:center;gap:2px;padding:0 8px;height:38px;border:1px solid var(--line-strong);border-radius:9px;background:var(--surface)}
+.sp-lbl{font-size:12px;font-weight:700;color:var(--ink-3);margin-right:4px}
+.spk{border:0;background:none;padding:3px;color:var(--line-strong);cursor:pointer;display:grid;place-items:center;border-radius:6px}
+.spk .ic{width:16px;height:16px}
+.spk.on{color:var(--spark)}
+.nb-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.nb-tools input{flex:0 1 260px}
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.fchip{height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);font-weight:600;font-size:13px;cursor:pointer;color:var(--ink-2)}
+.fchip:hover{color:var(--ink);border-color:var(--ink-3)}
+.fchip[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px 18px;align-items:start}
+.note{position:relative;background:var(--note);color:var(--note-ink);border-radius:3px 3px 16px 3px;padding:16px 16px 8px;box-shadow:0 1px 1px rgba(60,45,0,.1),0 12px 24px -16px rgba(40,30,0,.55);display:flex;flex-direction:column;gap:8px;transition:transform .2s}
+.note:nth-child(3n+1){transform:rotate(-.7deg)}
+.note:nth-child(3n+2){transform:rotate(.5deg)}
+.note:hover,.note:focus-within{transform:none}
+.note.pinned::before{content:"";position:absolute;top:-9px;left:50%;width:64px;height:18px;margin-left:-32px;background:var(--hl);opacity:.8;transform:rotate(-3deg);border-radius:2px}
+.note-top{display:flex;align-items:center;gap:8px;min-height:22px}
+.note-top .spk{color:var(--note-rule)}
+.note-top .spk.on{color:var(--spark)}
+.note-top .spark-pick{border:0;padding:0;height:auto;background:none}
+.note-top .sp-lbl{display:none}
+.note-top .chip{background:transparent;border-color:var(--note-rule);color:var(--note-ink)}
+.note-age{margin-left:auto;font-size:12px;opacity:.7;white-space:nowrap}
+.note-title{margin:0;font:700 27px/1.02 var(--f-hand);overflow-wrap:anywhere}
+.note-body{margin:0;white-space:pre-wrap;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--note-tag)}
+.note-proj{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;text-decoration:none;align-self:flex-start;padding:3px 9px;border-radius:999px;border:1px solid var(--note-rule)}
+.note-proj:hover{border-color:currentColor}
+.note-proj .ic{width:13px;height:13px}
+.note-actions{display:flex;align-items:center;flex-wrap:wrap;gap:2px;border-top:1px dashed var(--note-rule);padding-top:6px;margin-top:2px}
+.note-actions .grow{flex:1}
+.note .icon-btn{color:var(--note-ink);opacity:.75}
+.note .icon-btn:hover{opacity:1;background:var(--note-tag)}
+.note .btn{background:transparent;border-color:var(--note-rule);color:var(--note-ink)}
+.note .btn:hover{border-color:currentColor}
+.note textarea,.note input:not([type=checkbox]){background:var(--surface);color:var(--ink)}
+.ai-box{background:var(--note-tag);border-radius:8px;padding:10px 12px;font-size:13px;display:grid;gap:6px}
+.ai-box summary{cursor:pointer;font-weight:700;font-size:12px}
+.ai-head{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:700;font-size:12px}
+.ai-text p{margin:0 0 6px}
+.ai-text p:last-child{margin:0}
+.thinking::after{content:"";display:inline-block;width:1.2em;text-align:left;animation:dots 1.2s steps(4,end) infinite}
+@keyframes dots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+.empty-state{display:grid;gap:10px;justify-items:start;padding:28px}
+.empty-state h2,.empty-state h1{margin:0}
+.empty-state p{margin:0;color:var(--ink-2)}
+
+/* ---------- overlays ---------- */
+.modal-scrim{position:fixed;inset:0;background:var(--scrim);z-index:80}
+.modal{position:fixed;z-index:81;left:50%;top:50%;transform:translate(-50%,-50%);width:min(660px,calc(100vw - 32px));max-height:calc(100dvh - 48px);overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-lg);padding:22px;display:grid;gap:16px}
+.modal-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.modal-head h2{margin:0;font:800 24px/1.1 var(--f-display);letter-spacing:-.02em}
+.modal form{display:grid;gap:16px}
+.field{display:grid;gap:6px}
+.field>span,.field legend{font-size:12px;font-weight:700;color:var(--ink-2)}
+fieldset.field{border:0;padding:0;margin:0}
+.pick{display:flex;flex-wrap:wrap;gap:6px}
+.pick button{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);font-weight:600;font-size:13px;cursor:pointer;color:var(--ink-2)}
+.pick button:hover{border-color:var(--ink-3);color:var(--ink)}
+.pick button[aria-pressed="true"]{border-color:var(--ink);color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);background:var(--surface-2)}
+.pick button[aria-pressed="true"]::after{content:"✓";font-size:12px}
+.plan{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:10px;background:var(--surface-2)}
+.plan-secs{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.plan-secs h4{margin:0 0 4px;display:flex;align-items:center;gap:7px;font-size:13px}
+.plan-secs ul{margin:0;padding-left:18px;font-size:12px;color:var(--ink-2)}
+.modal-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px}
+.ai-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:10px 12px;border-radius:10px;border:1px dashed var(--line-strong)}
+.ai-row p{margin:0;font-size:13px;color:var(--ink-2);flex:1;min-width:200px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:90;display:flex;align-items:center;gap:14px;background:var(--btn);color:var(--btn-ink);padding:10px 16px;border-radius:10px;box-shadow:var(--shadow-lg);font-weight:600;font-size:13px;max-width:calc(100vw - 32px)}
+.toast .linkish{color:var(--hl);text-decoration-color:var(--hl)}
+.tip{position:fixed;left:0;top:0;z-index:95;pointer-events:none;background:var(--btn);color:var(--btn-ink);font:600 12px/1.3 var(--f-body);padding:6px 9px;border-radius:7px;box-shadow:var(--shadow);max-width:240px}
+#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:99}
+.skel{border-radius:14px;background:var(--track);min-height:180px;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.55}}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  .hq-grid{grid-template-columns:minmax(0,1fr)}
+  .hq-side{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .p-top{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:900px){
+  .stage-btn small{display:none}
+}
+@media (max-width:860px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  .topbar{display:flex;position:sticky;top:env(safe-area-inset-top,0px);z-index:30;align-items:center;gap:10px;padding:8px 16px;background:var(--surface);border-bottom:1px solid var(--line)}
+  .topbar .wordmark{font-size:20px;flex:1}
+  .side{position:fixed;top:0;left:0;bottom:0;height:auto;width:min(300px,86vw);z-index:60;transform:translateX(-105%);transition:transform .25s ease;box-shadow:var(--shadow-lg);padding-top:calc(20px + env(safe-area-inset-top,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+  body.nav-open .side{transform:none}
+  body.nav-open .nav-scrim{display:block;position:fixed;inset:0;background:var(--scrim);z-index:55}
+  .main{padding-block:20px 72px}
+  .cap-row{grid-template-columns:minmax(0,1fr) auto}
+  .cap-row select{grid-column:1}
+}
+@media (max-width:640px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpis>div:nth-child(3){border-left:0}
+  .kpis>div:nth-child(n+3){border-top:1px solid var(--line)}
+  .stages{display:flex;overflow-x:auto;padding-bottom:4px}
+  .stages li{flex:0 0 118px}
+  .kind-grid{grid-template-columns:minmax(0,1fr)}
+  .secs{grid-template-columns:minmax(0,1fr)}
+  .modal{padding:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .note{transform:none!important}
+  .p-card:hover{transform:none}
+}
+</style>
+
+<header class="topbar" id="topbar"></header>
+<div class="app">
+  <aside class="side" id="side" aria-label="Main navigation"></aside>
+  <div class="nav-scrim" data-action="nav-close"></div>
+  <main class="main" id="main" tabindex="-1"></main>
+</div>
+<div id="modal-root"></div>
+<div id="tip" class="tip" role="tooltip" hidden></div>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script id="foundry-seed" type="application/json">{"projects": [{"createdAt": 1789213367250, "custom": [], "example": true, "links": {}, "name": "Corner Cup coffee subscription", "parked": false, "pitch": "Fresh beans from local roasters, delivered every two weeks.", "sections": [{"goals": [{"createdAt": 1789040567250, "done": true, "doneAt": 1789472567250, "id": "g020", "text": "Write a one-sentence pitch"}, {"createdAt": 1789040567250, "done": true, "doneAt": 1789645367250, "id": "g021", "text": "Make an Instagram page"}, {"createdAt": 1789040567250, "done": true, "doneAt": 1789818167250, "id": "g022", "text": "Launch a waitlist page"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g023", "text": "Collect 50 waitlist emails"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g024", "text": "Partner with one local cafe"}], "id": "sc1", "kind": "marketing", "name": "Marketing"}, {"goals": [{"createdAt": 1789040567250, "done": true, "doneAt": 1789558967250, "id": "g025", "text": "Find 2 local roasters"}, {"createdAt": 1789040567250, "done": true, "doneAt": 1789990967250, "id": "g026", "text": "Price out bags and labels"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g027", "text": "Test one delivery route"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g028", "text": "Set up a shipping schedule"}], "id": "sc2", "kind": "operations", "name": "Operations"}, {"goals": [{"createdAt": 1789040567250, "done": true, "doneAt": 1790077367250, "id": "g029", "text": "Estimate the cost per bag"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g030", "text": "Pick a subscription price"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g031", "text": "Open a business bank account"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g032", "text": "Set a 3-month revenue goal"}], "id": "sc3", "kind": "finance", "name": "Finance"}], "stage": "validate", "updatedAt": 1790077367250, "id": "pcoffee"}, {"createdAt": 1790260907250, "custom": [], "example": false, "links": {"chatgpt": "https://chatgpt.com/", "claude": "https://claude.ai/", "gemini": "https://gemini.google.com/"}, "name": "Foundry website", "parked": false, "pitch": "A think tank where entrepreneurs keep unlimited projects, jot ideas, and track progress section by section.", "sections": [{"goals": [{"createdAt": 1789040567250, "done": true, "doneAt": 1790260967250, "id": "g001", "text": "Build a clickable prototype"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g002", "text": "Pick the final name and check the domain"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g003", "text": "Show the prototype to 5 founders and take notes"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g004", "text": "Choose the v1 feature list"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g005", "text": "Decide which features are free vs. paid"}], "id": "sfprod", "kind": "product", "name": "Product"}, {"goals": [{"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g006", "text": "Pick the stack (e.g. Next.js + Supabase)"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g007", "text": "Add sign-up and login"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g008", "text": "Save projects, sections and goals to a database"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g009", "text": "Add \"Sign in with GitHub\" to pull repo details"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g010", "text": "Deploy to a custom domain"}], "id": "sfcode", "kind": "coding", "name": "Coding"}, {"goals": [{"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g011", "text": "Choose the logo and colors"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g012", "text": "Design the phone layout"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g013", "text": "Design the first screen a new user sees"}], "id": "sfdes", "kind": "design", "name": "Design"}, {"goals": [{"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g014", "text": "Write the one-sentence pitch"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g015", "text": "Launch a waitlist page"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g016", "text": "Post the prototype in 2 founder communities"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g017", "text": "Collect 100 waitlist emails"}], "id": "sfmkt", "kind": "marketing", "name": "Marketing"}, {"goals": [{"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g018", "text": "Estimate hosting cost per user"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g019", "text": "Pick a price for the paid plan"}], "id": "sffin", "kind": "finance", "name": "Finance"}], "stage": "validate", "updatedAt": 1790260967250, "id": "pfoundry"}, {"createdAt": 1789126967250, "custom": [], "example": true, "links": {}, "name": "ResumeFit AI", "parked": false, "pitch": "Paste a job post and get a résumé tailored to it in 30 seconds.", "sections": [{"goals": [{"createdAt": 1789040567250, "done": true, "doneAt": 1789299767250, "id": "g033", "text": "Set up the repo and README"}, {"createdAt": 1789040567250, "done": true, "doneAt": 1789731767250, "id": "g034", "text": "Build the job-post reader"}, {"createdAt": 1789040567250, "done": true, "doneAt": 1789904567250, "id": "g035", "text": "Connect the AI model"}, {"createdAt": 1789040567250, "done": true, "doneAt": 1790163767250, "id": "g036", "text": "Build the résumé editor screen"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g037", "text": "Add PDF export"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g038", "text": "Deploy a live preview"}], "id": "sr1", "kind": "coding", "name": "Coding"}, {"goals": [{"createdAt": 1789040567250, "done": true, "doneAt": 1789386167250, "id": "g039", "text": "Interview 5 job seekers"}, {"createdAt": 1789040567250, "done": true, "doneAt": 1789472567250, "id": "g040", "text": "List the 3 core features"}, {"createdAt": 1789040567250, "done": true, "doneAt": 1789731767250, "id": "g041", "text": "Sketch the main flow"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g042", "text": "Ship v1 to 10 testers"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g043", "text": "Write down what v1 will not do"}], "id": "sr2", "kind": "product", "name": "Product"}, {"goals": [{"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g044", "text": "List 20 career coaches to partner with"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g045", "text": "Write the outreach message"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g046", "text": "Book 5 calls"}, {"createdAt": 1789040567250, "done": false, "doneAt": null, "id": "g047", "text": "Close the first paying customer"}], "id": "sr3", "kind": "sales", "name": "Sales"}], "stage": "build", "updatedAt": 1790163767250, "id": "presume"}], "ideas": [{"ai": null, "createdAt": 1789903847250, "d": 4, "example": true, "pinned": false, "projectId": null, "spark": 2, "tags": ["local", "service"], "text": "Dog walking for apartment buildings\nOne walker per building, billed monthly through the front desk.", "updatedAt": 1789904567250, "id": "ie01"}, {"ai": null, "createdAt": 1789730987250, "d": 6, "example": true, "pinned": false, "projectId": null, "spark": 3, "tags": ["food"], "text": "Meal-prep kits for night-shift nurses\nHealthy meals timed for a 7pm to 7am schedule.", "updatedAt": 1789731767250, "id": "ie02"}, {"ai": null, "createdAt": 1789471727250, "d": 9, "example": true, "pinned": false, "projectId": null, "spark": 2, "tags": ["ai", "saas"], "text": "Email thread summarizer\nA browser extension that turns a 40-message thread into 5 bullet points.", "updatedAt": 1789472567250, "id": "ie03"}, {"ai": null, "createdAt": 1789990067250, "d": 3, "example": true, "pinned": false, "projectId": "pcoffee", "spark": 2, "tags": ["marketing"], "text": "Coffee tasting night\nHost a monthly tasting at the partner cafe to win subscribers.", "updatedAt": 1789990967250, "id": "ie04"}, {"ai": null, "createdAt": 1790260907250, "example": false, "pinned": true, "projectId": "pfoundry", "spark": 3, "tags": ["feature"], "text": "Idea to project in one click\nClaude reads a notebook note and drafts the sections and starter goals. Try it: press \"Make it a project\" on any note, then \"Draft a plan\".", "updatedAt": 1790260967250, "id": "if01"}, {"ai": null, "createdAt": 1790260847250, "example": false, "pinned": false, "projectId": "pfoundry", "spark": 3, "tags": ["feature"], "text": "Weekly founder review\nEvery Sunday, a short recap: goals finished, what stalled, and what to do next week.", "updatedAt": 1790260967250, "id": "if02"}, {"ai": null, "createdAt": 1790260787250, "example": false, "pinned": false, "projectId": "pfoundry", "spark": 2, "tags": ["feature"], "text": "Momentum streaks\nCount the days in a row you checked at least one goal, and show the streak on HQ.", "updatedAt": 1790260967250, "id": "if03"}, {"ai": null, "createdAt": 1790260727250, "example": false, "pinned": false, "projectId": "pfoundry", "spark": 2, "tags": ["feature", "github"], "text": "Live GitHub stats\nAfter you connect GitHub, show the last commit, open issues and pull requests on the project page.", "updatedAt": 1790260967250, "id": "if04"}, {"ai": null, "createdAt": 1790260667250, "example": false, "pinned": false, "projectId": "pfoundry", "spark": 3, "tags": ["feature"], "text": "Project templates\nStart from SaaS, Online store, YouTube channel, Local service or Mobile app with the sections already set up.", "updatedAt": 1790260967250, "id": "if05"}, {"ai": null, "createdAt": 1790260607250, "example": false, "pinned": false, "projectId": "pfoundry", "spark": 2, "tags": ["feature", "community"], "text": "Accountability partner\nInvite one founder friend to see your progress bars. Each of you gets a nudge when the other goes quiet.", "updatedAt": 1790260967250, "id": "if06"}, {"ai": null, "createdAt": 1790260547250, "example": false, "pinned": false, "projectId": "pfoundry", "spark": 2, "tags": ["feature"], "text": "Idea scorecard\nRate each idea on pain, market size and how fast you could test it. Sort the notebook by score.", "updatedAt": 1790260967250, "id": "if07"}, {"ai": null, "createdAt": 1790260487250, "example": false, "pinned": false, "projectId": "pfoundry", "spark": 2, "tags": ["feature", "community"], "text": "Build-in-public page\nA shareable, read-only page with your progress bars for your audience.", "updatedAt": 1790260967250, "id": "if08"}, {"ai": null, "createdAt": 1790260427250, "example": false, "pinned": false, "projectId": "pfoundry", "spark": 1, "tags": ["feature", "mobile"], "text": "Voice jotting\nRecord a memo on your phone and it lands in the notebook as text.", "updatedAt": 1790260967250, "id": "if09"}, {"ai": null, "createdAt": 1790260367250, "example": false, "pinned": false, "projectId": "pfoundry", "spark": 1, "tags": ["feature"], "text": "Money per project\nTrack revenue and costs next to the goals so you can see which project pays.", "updatedAt": 1790260967250, "id": "if10"}, {"ai": null, "createdAt": 1790260307250, "example": false, "pinned": false, "projectId": "pfoundry", "spark": 2, "tags": ["feature"], "text": "Due dates and a This Week view\nGive goals due dates and see everything due this week across all projects.", "updatedAt": 1790260967250, "id": "if11"}]}</script>
+<script>
+(() => {
+'use strict';
+
+/* ================= constants ================= */
+const KINDS = {
+  coding:     {label:'Coding',     blurb:'Build the thing',            starters:['Set up the repo and README','Pick the tech stack','Build the first working screen','Add sign-up and login','Deploy a live preview link']},
+  marketing:  {label:'Marketing',  blurb:'Get noticed',                starters:['Write a one-sentence pitch','Describe the ideal customer','Launch a waitlist page','Share the idea in 3 communities','Collect 50 waitlist emails']},
+  product:    {label:'Product',    blurb:'Decide what to build',       starters:['List the 3 core features for v1','Sketch the main user flow','Interview 5 potential users','Write down what v1 will not do','Ship v1 to 10 testers']},
+  finance:    {label:'Finance',    blurb:'Money in and out',           starters:['Estimate monthly costs','Pick a pricing model','Set a first-year revenue target','Open a business bank account','Track every expense in one sheet']},
+  design:     {label:'Design',     blurb:'Look and feel',              starters:['Pick a name and check the domain','Choose colors and fonts','Design the logo','Mock up the home screen','Make a one-page brand guide']},
+  operations: {label:'Operations', blurb:'Run it smoothly',            starters:['Choose the tools you will use','Write a weekly routine','Document how orders get fulfilled','Set up a shared calendar','Automate one repetitive task']},
+  sales:      {label:'Sales',      blurb:'Close customers',            starters:['List 20 dream customers','Write a short outreach message','Book 5 discovery calls','Close the first paying customer','Ask the first customer for a referral']},
+  legal:      {label:'Legal',      blurb:'Protect the business',       starters:['Choose a business structure','Register the business name','Draft terms of service','Draft a privacy policy','Check for trademark conflicts']},
+  custom:     {label:'Custom',     blurb:'Anything else',              starters:[]},
+};
+const KIND_ORDER = ['coding','marketing','product','finance','design','operations','sales','legal'];
+const STAGES = [
+  {key:'spark',    label:'Spark',    hint:'Just an idea'},
+  {key:'validate', label:'Validate', hint:'Do people want it?'},
+  {key:'build',    label:'Build',    hint:'Making version one'},
+  {key:'launch',   label:'Launch',   hint:'In front of customers'},
+  {key:'grow',     label:'Grow',     hint:'Finding more of them'},
+];
+const TOOLS = [
+  {key:'github',  name:'GitHub',  icon:'branch', ph:'https://github.com/you/your-repo',      tip:'Paste the repository link. Once it is here you also get quick links to issues, pull requests and github.dev.'},
+  {key:'vscode',  name:'VS Code', icon:'code',   ph:'https://vscode.dev/github/you/your-repo', tip:'A vscode.dev link opens the repo in VS Code in your browser. A vscode://file/… link opens a local folder in the desktop app.'},
+  {key:'claude',  name:'Claude',  icon:'spark',  ph:'https://claude.ai/project/…',            tip:'Link the Claude project or chat where you work on this.'},
+  {key:'chatgpt', name:'ChatGPT', icon:'chat',   ph:'https://chatgpt.com/g/…',                tip:'Link the ChatGPT project, GPT or chat you use for this.'},
+  {key:'gemini',  name:'Gemini',  icon:'star',   ph:'https://gemini.google.com/gem/…',        tip:'Link the Gemini Gem or chat you use for this.'},
+];
+const SPARK = {1:'Maybe', 2:'Promising', 3:'Hot'};
+const PROMPTS = [
+  'What did you pay for this month that you hated paying for?',
+  'What task did you do twice this week that a tool could do once?',
+  'What do friends keep asking you to help them with?',
+  'Which spreadsheet at work should really be an app?',
+  'What would you build if it only had to delight 100 people?',
+  'Which hobby community has no good tools?',
+  'What do you use every day that is slow, confusing or ugly?',
+  'What could you sell before you build it?',
+  'Which local business near you still runs on paper?',
+  'What skill do you have that people would pay to learn?',
+  'What problem do you understand better than most people?',
+];
+const ICONS = {
+  hq:'<rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/>',
+  book:'<path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 7.5h6M9 11h4"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>',
+  bolt:'<path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/>',
+  pin:'<path d="M9 3h6l-1 6 4 4H6l4-4z"/><path d="M12 13v8"/>',
+  trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',
+  pencil:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/>',
+  ext:'<path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>',
+  check:'<path d="m5 12.5 4.5 4.5L19 7.5"/>',
+  branch:'<circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="7" r="2"/><path d="M6 7v10M18 9c0 5-12 3-12 8"/>',
+  code:'<path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/>',
+  spark:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/>',
+  chat:'<path d="M4 5h16v11H9l-5 4z"/>',
+  star:'<path d="M12 3c.6 4.8 4.2 8.4 9 9-4.8.6-8.4 4.2-9 9-.6-4.8-4.2-8.4-9-9 4.8-.6 8.4-4.2 9-9z"/>',
+  link:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+  menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',
+  x:'<path d="M6 6l12 12M18 6 6 18"/>',
+  wand:'<path d="m4 20 11-11"/><path d="M14 3v3M19 8h-3M17.5 4.5l-2 2M11 5.5 10 4.5M19.5 12l-1-1"/>',
+  rocket:'<path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 15 6.5 12.5C8 7 13 3 20 4c1 7-3 12-8.5 13.5z"/><circle cx="15" cy="9" r="1.6"/>',
+  pause:'<path d="M9 5v14M15 5v14"/>',
+  play:'<path d="M7 5v14l11-7z"/>',
+  arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+  stop:'<rect x="6" y="6" width="12" height="12" rx="2"/>',
+};
+const LS_KEY = 'foundry.workspace.v1';
+const reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ================= state ================= */
+const S = {
+  mode:'loading', db:null, ai:null, aiOff:false, readOnly:false, dbLost:false,
+  projects:new Map(), ideas:new Map(), loaded:{projects:false, ideas:false},
+  view:{name:'hq'}, modal:null, undo:null, toastT:0, confettiRaf:0,
+  ui:{filter:'all', q:'', prompt:Math.floor(Math.random()*PROMPTS.length), capSpark:1, addStarter:true, parkedOpen:false, navOpen:false,
+      editGoal:null, editIdea:null, renameSec:null, linkEdit:null, linkErr:null, editProj:null, confirm:null, addSec:null,
+      stress:null, suggest:null, autofocus:null},
+};
+
+/* ================= helpers ================= */
+const $ = (s, r=document) => r.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid = p => p + Date.now().toString(36).slice(-5) + Math.random().toString(36).slice(2,8);
+const clone = o => JSON.parse(JSON.stringify(o));
+const now = () => Date.now();
+const str = (v, max=500) => (typeof v === 'string' ? v : '').slice(0, max);
+const num = v => (typeof v === 'number' && isFinite(v)) ? v : 0;
+const ic = (n, cls='') => `<svg class="ic ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n]||''}</svg>`;
+const firstLine = t => String(t||'').split('\n')[0].trim();
+const P = id => S.projects.get(id);
+const secOf = (p, sid) => p && p.sections.find(s => s.id === sid);
+const aiOn = () => typeof S.ai === 'function' && !S.aiOff;
+const stageOf = key => STAGES.find(s => s.key === key) || STAGES[0];
+
+function normUrl(raw){
+  let u = String(raw||'').trim();
+  if (!u) return '';
+  if (/^vscode(-insiders)?:\/\//i.test(u)) return u;
+  if (!/^[a-z][a-z0-9+.-]*:/i.test(u)) u = 'https://' + u;
+  try { const x = new URL(u); if (x.protocol !== 'https:' && x.protocol !== 'http:') return null; if (!x.hostname.includes('.')) return null; return x.href; }
+  catch { return null; }
+}
+const okHref = u => /^(https?:\/\/|vscode(-insiders)?:\/\/)/i.test(u||'') ? u : '';
+function hostOf(u){
+  try { const x = new URL(u); if (x.protocol.startsWith('vscode')) return 'Local folder';
+    return (x.host.replace(/^www\./,'') + x.pathname.replace(/\/$/,'')); }
+  catch { return u; }
+}
+function ghParse(u){
+  const m = /^https?:\/\/(?:www\.)?github\.com\/([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)/.exec(u||'');
+  return m ? {owner:m[1], repo:m[2].replace(/\.git$/,'')} : null;
+}
+function parseTags(s){
+  const out = [];
+  for (const t of String(s||'').split(',')) { const v = t.trim().toLowerCase().replace(/^#/,'').slice(0,24); if (v && !out.includes(v)) out.push(v); }
+  return out.slice(0,6);
+}
+function ago(ts){
+  if (!ts) return '';
+  const s = (now()-ts)/1000; if (s < 60) return 'just now';
+  const m = s/60; if (m < 60) return Math.floor(m)+'m ago';
+  const h = m/60; if (h < 24) return Math.floor(h)+'h ago';
+  const d = h/24; if (d < 7) return Math.floor(d)+'d ago';
+  return new Date(ts).toLocaleDateString(undefined,{month:'short',day:'numeric'});
+}
+const todayLabel = () => new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
+
+function projStats(p){
+  let total=0, done=0;
+  const secs = p.sections.map(s => { const t = s.goals.length, d = s.goals.filter(g => g.done).length; total += t; done += d; return {s, t, d, pct: t ? Math.round(d/t*100) : 0}; });
+  return {total, done, pct: total ? Math.round(done/total*100) : 0, secs};
+}
+const sortedProjects = () => [...S.projects.values()].sort((a,b) => b.createdAt - a.createdAt);
+const ideaSort = (a,b) => (b.pinned - a.pinned) || (b.createdAt - a.createdAt);
+
+/* ================= normalizers (data can come from anywhere) ================= */
+function normGoal(g){ return {id: str(g&&g.id,40) || uid('g'), text: str(g&&g.text,200) || 'Untitled goal', done: !!(g&&g.done), doneAt: num(g&&g.doneAt) || null, createdAt: num(g&&g.createdAt) || now()}; }
+function normSection(s){
+  const kind = KINDS[s&&s.kind] ? s.kind : 'custom';
+  return {id: str(s&&s.id,40) || uid('s'), kind, name: str(s&&s.name,40) || KINDS[kind].label, goals: Array.isArray(s&&s.goals) ? s.goals.map(normGoal) : []};
+}
+function normProject(o, id){
+  o = o || {};
+  const links = {};
+  for (const t of TOOLS) { const u = okHref(str(o.links && o.links[t.key], 600)); if (u) links[t.key] = u; }
+  return {
+    id, name: str(o.name,80) || 'Untitled project', pitch: str(o.pitch,240),
+    stage: STAGES.some(s => s.key === o.stage) ? o.stage : 'spark',
+    parked: !!o.parked, example: !!o.example,
+    createdAt: num(o.createdAt) || now(), updatedAt: num(o.updatedAt) || num(o.createdAt) || now(),
+    links,
+    custom: Array.isArray(o.custom) ? o.custom.map(c => ({id: str(c&&c.id,40) || uid('c'), label: str(c&&c.label,40) || 'Link', url: okHref(str(c&&c.url,600))})).filter(c => c.url) : [],
+    sections: Array.isArray(o.sections) ? o.sections.map(normSection) : [],
+  };
+}
+function normIdea(o, id){
+  o = o || {};
+  const sp = Math.round(num(o.spark));
+  return {
+    id, text: str(o.text,4000) || 'Untitled idea', tags: Array.isArray(o.tags) ? parseTags(o.tags.join(',')) : [],
+    spark: sp >= 1 && sp <= 3 ? sp : 1, pinned: !!o.pinned, example: !!o.example,
+    projectId: str(o.projectId,60) || null,
+    createdAt: num(o.createdAt) || now(), updatedAt: num(o.updatedAt) || num(o.createdAt) || now(),
+    ai: o.ai && typeof o.ai.text === 'string' ? {text: str(o.ai.text,4000), at: num(o.ai.at)} : null,
+  };
+}
+
+/* ================= persistence ================= */
+const DELETED = '__deleted__';
+const pending = new Map();   // "coll/id" -> body queued but not yet sent
+const inflight = new Set();
+
+function startLocal(){
+  if (S.mode !== 'loading') return;
+  S.mode = 'local';
+  // Saved work in this browser wins; otherwise start from the example workspace below.
+  let d = null;
+  try { const raw = localStorage.getItem(LS_KEY); if (raw) d = JSON.parse(raw); } catch {}
+  if (!d) { try { d = JSON.parse(document.getElementById('foundry-seed').textContent); } catch {} }
+  if (d) {
+    (d.projects||[]).forEach(o => { if (o && o.id) S.projects.set(o.id, normProject(o, o.id)); });
+    (d.ideas||[]).forEach(o => { if (o && o.id) S.ideas.set(o.id, normIdea(o, o.id)); });
+  }
+  render();
+}
+function saveLocal(){
+  try { localStorage.setItem(LS_KEY, JSON.stringify({projects:[...S.projects.values()], ideas:[...S.ideas.values()]})); } catch {}
+}
+function startDb(db){
+  if (S.mode !== 'loading') return;
+  S.db = db; S.mode = 'db';
+  const tries = {projects:0, ideas:0};
+  const sub = coll => {
+    db.collection(coll).onSnapshot(snap => { S.loaded[coll] = true; ingest(coll, snap); }, err => {
+      if (err && err.code === 'unavailable' && tries[coll]++ < 3) { setTimeout(() => sub(coll), 1500); return; }
+      S.dbLost = true; S.loaded[coll] = true; render();
+    });
+  };
+  sub('projects'); sub('ideas');
+}
+function ingest(coll, snap){
+  const map = new Map();
+  const norm = coll === 'projects' ? normProject : normIdea;
+  for (const d of snap.docs) { if (d.exists) map.set(d.id, norm(clone(d.data()), d.id)); }
+  for (const [key, v] of pending) {
+    const [c, id] = key.split('/');
+    if (c !== coll) continue;
+    if (v === DELETED) map.delete(id); else map.set(id, norm(clone(v), id));
+  }
+  S[coll] = map;
+  render();
+}
+function queueWrite(key, body){
+  pending.set(key, body);
+  if (!inflight.has(key)) flush(key);
+}
+async function flush(key){
+  inflight.add(key);
+  try {
+    while (pending.has(key)) {
+      const v = pending.get(key); pending.delete(key);
+      const ref = S.db.doc(key);
+      const run = () => v === DELETED ? ref.delete() : ref.set(v);
+      try { await run(); }
+      catch (e) {
+        if (e && e.code === 'unavailable') {
+          await new Promise(r => setTimeout(r, 400 + Math.random()*800));
+          try { await run(); } catch (e2) { writeFailed(e2); }
+        } else writeFailed(e);
+      }
+    }
+  } finally { inflight.delete(key); }
+}
+function writeFailed(e){
+  const c = e && e.code;
+  if (c === 'invalid_argument') { if (!S.readOnly) { S.readOnly = true; render(); toast('You can look around, but your access level does not allow saving changes.'); } }
+  else if (c === 'quota_exceeded') toast('Your workspace is full. Delete a few old ideas or projects to add more.');
+  else if (c === 'revoked' || c === 'not_granted') { S.dbLost = true; render(); toast('This page lost access to saved data. Reload to reconnect.'); }
+  else toast('Could not save that change. Check your connection, then try again.');
+}
+function persist(coll, obj){
+  if (S.mode === 'local') return saveLocal();
+  if (S.mode !== 'db' || S.dbLost) return;
+  const body = clone(obj); delete body.id;
+  queueWrite(coll + '/' + obj.id, body);
+}
+function persistDel(coll, id){
+  if (S.mode === 'local') return saveLocal();
+  if (S.mode !== 'db' || S.dbLost) return;
+  queueWrite(coll + '/' + id, DELETED);
+}
+function saveProject(p, quiet){ p.updatedAt = now(); S.projects.set(p.id, p); persist('projects', p); if (!quiet) render(); }
+function saveIdea(i, quiet){ i.updatedAt = now(); S.ideas.set(i.id, i); persist('ideas', i); if (!quiet) render(); }
+
+/* ================= render core ================= */
+function render(){
+  const vals = {};
+  document.querySelectorAll('input[id],textarea[id],select[id]').forEach(el => { if (el.type !== 'checkbox' && el.type !== 'radio') vals[el.id] = el.value; });
+  const ae = document.activeElement;
+  const focus = ae && ae.id ? {id: ae.id, s: ae.selectionStart, e: ae.selectionEnd} : null;
+  const bars = {};
+  document.querySelectorAll('[data-bar]').forEach(el => { const i = el.firstElementChild; if (i) bars[el.dataset.bar] = i.style.width; });
+
+  $('#side').innerHTML = renderSide();
+  $('#main').innerHTML = `<div class="main-inner">${renderMain()}</div>`;
+  $('#modal-root').innerHTML = renderModal();
+  document.body.classList.toggle('nav-open', !!S.ui.navOpen);
+
+  for (const [id, v] of Object.entries(vals)) { const el = document.getElementById(id); if (el && el.value !== v) el.value = v; }
+  const af = S.ui.autofocus; S.ui.autofocus = null;
+  const target = af ? document.getElementById(af) : (focus ? document.getElementById(focus.id) : null);
+  if (target && document.activeElement !== target) {
+    target.focus({preventScroll: !af});
+    if (!af && focus && typeof focus.s === 'number') { try { target.setSelectionRange(focus.s, focus.e); } catch {} }
+  }
+  animateBars(bars);
+  hideTip();
+}
+function animateBars(prev){
+  if (reduced) return;
+  const moves = [];
+  document.querySelectorAll('[data-bar]').forEach(el => {
+    const i = el.firstElementChild; const old = prev[el.dataset.bar];
+    if (i && old != null && old !== i.style.width) { const t = i.style.width; i.style.transition = 'none'; i.style.width = old; moves.push([i, t]); }
+  });
+  if (!moves.length) return;
+  void document.body.offsetWidth;
+  moves.forEach(([i, t]) => { i.style.transition = ''; i.style.width = t; });
+}
+const bar = (key, pct, cls='') => `<span class="bar ${cls}" data-bar="${key}"><i style="width:${pct}%"></i></span>`;
+function segBar(st, big){
+  const segs = st.total ? st.secs.filter(x => x.d > 0).map(x => `<i class="k-${x.s.kind}" style="width:${(x.d/st.total*100).toFixed(2)}%;background:var(--c)" data-tip="${esc(x.s.name)}: ${x.d} of ${x.t} done"></i>`).join('') : '';
+  return `<div class="seg${big ? ' seg-big' : ''}" role="img" aria-label="${st.done} of ${st.total} goals done, ${st.pct}%">${segs}</div>`;
+}
+
+/* ================= sidebar ================= */
+function storageNote(){
+  if (S.dbLost) return `<span class="dot bad"></span> Not saving. Reload to reconnect.`;
+  if (S.readOnly) return `<span class="dot warn"></span> View only`;
+  if (S.mode === 'db') return `<span class="dot"></span> Saved to your workspace`;
+  if (S.mode === 'local') return `<span class="dot warn"></span> Saved in this browser only`;
+  return `<span class="dot warn"></span> Connecting…`;
+}
+function renderSide(){
+  const list = sortedProjects();
+  const active = list.filter(p => !p.parked), parked = list.filter(p => p.parked);
+  const v = S.view;
+  const item = p => {
+    const st = projStats(p); const on = v.name === 'project' && v.id === p.id;
+    return `<li><a href="#project-${p.id}" data-nav class="sp${on ? ' on' : ''}"${on ? ' aria-current="page"' : ''}><span class="sp-name">${esc(p.name)}</span><span class="sp-pct">${st.pct}%</span>${bar('side-'+p.id, st.pct)}</a></li>`;
+  };
+  return `
+  <div class="brand"><span class="logo">${ic('bolt','fill')}</span><span><b class="wordmark">Foundry</b><small>Think tank for founders</small></span></div>
+  <div class="side-actions">
+    <button class="btn primary" data-action="new-project">${ic('plus')} New project</button>
+    <button class="btn hl" data-action="jot">${ic('bolt')} Jot an idea</button>
+  </div>
+  <nav class="nav" aria-label="Sections">
+    <a href="#hq" data-nav class="nav-item${v.name === 'hq' ? ' on' : ''}">${ic('hq')} HQ</a>
+    <a href="#notebook" data-nav class="nav-item${v.name === 'notebook' ? ' on' : ''}">${ic('book')} Notebook <span class="count">${S.ideas.size}</span></a>
+  </nav>
+  <div class="side-label">Projects <span class="count">${active.length}</span></div>
+  ${active.length ? `<ul class="sp-list">${active.map(item).join('')}</ul>` : `<p class="side-empty">No active projects yet.</p>`}
+  ${parked.length ? `<details class="parked"${S.ui.parkedOpen ? ' open' : ''}><summary>Parked <span class="count">${parked.length}</span></summary><ul class="sp-list">${parked.map(item).join('')}</ul></details>` : ''}
+  <div class="side-foot">${storageNote()}</div>`;
+}
+
+/* ================= main views ================= */
+function renderMain(){
+  if (S.mode === 'loading' || (S.mode === 'db' && !(S.loaded.projects && S.loaded.ideas))) {
+    return `<header class="page-head"><div><p class="eyebrow">One moment</p><h1 class="h-page">Opening your workspace…</h1></div></header>
+      <div class="p-cards"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>`;
+  }
+  if (S.view.name === 'notebook') return renderNotebook();
+  if (S.view.name === 'project') return renderProject(S.view.id);
+  return renderHQ();
+}
+
+/* ---------- HQ ---------- */
+function momentum(){
+  const days = []; const t0 = new Date(); t0.setHours(0,0,0,0);
+  for (let i = 13; i >= 0; i--) { const d = new Date(t0); d.setDate(d.getDate() - i); days.push({t: d.getTime(), n: 0}); }
+  for (const p of S.projects.values()) for (const s of p.sections) for (const g of s.goals) {
+    if (!g.done || !g.doneAt) continue;
+    const d = new Date(g.doneAt); d.setHours(0,0,0,0);
+    const x = days.find(x => x.t === d.getTime()); if (x) x.n++;
+  }
+  return days;
+}
+function renderHQ(){
+  const all = sortedProjects();
+  const active = all.filter(p => !p.parked).sort((a,b) => b.updatedAt - a.updatedAt);
+  const parked = all.filter(p => p.parked);
+  let gDone = 0, gTotal = 0;
+  for (const p of all) { const st = projStats(p); gDone += st.done; gTotal += st.total; }
+  const days = momentum(); const week = days.slice(-7).reduce((a,d) => a + d.n, 0);
+  const hasEx = [...S.projects.values(), ...S.ideas.values()].some(x => x.example);
+  const empty = !all.length;
+  return `
+  <header class="page-head">
+    <div><p class="eyebrow">${esc(todayLabel())}</p><h1 class="h-page"><span class="hlmark">HQ</span></h1><p class="lede">Every project you are building, how far along it is, and what to do next.</p></div>
+    <div class="head-actions"><button class="btn hl" data-action="jot">${ic('bolt')} Jot an idea</button><button class="btn primary" data-action="new-project">${ic('plus')} New project</button></div>
+  </header>
+  ${hasEx ? examplesBanner() : ''}
+  <dl class="kpis">
+    <div><dt>Active projects</dt><dd>${active.length}</dd></div>
+    <div><dt>Goals done</dt><dd>${gDone}<small>of ${gTotal}</small></dd></div>
+    <div><dt>Done this week</dt><dd>${week}</dd></div>
+    <div><dt>Ideas in notebook</dt><dd>${S.ideas.size}</dd></div>
+  </dl>
+  <div class="hq-grid">
+    <section aria-labelledby="h-active">
+      <div class="sec-title"><h2 class="h2" id="h-active">Active projects</h2><span class="muted small">Most recent activity first</span></div>
+      ${empty ? `<div class="card empty-state"><h2 class="h2">Start your first project</h2><p>Give it a name, pick sections like Coding and Marketing, and break each one into small goals.</p><button class="btn primary" data-action="new-project">${ic('plus')} New project</button></div>` :
+      `<div class="p-cards">${active.map(projectCard).join('')}<button class="p-card new" data-action="new-project">${ic('plus')}<b>Start a project</b><span>Unlimited projects. Park the ones you pause.</span></button></div>`}
+      ${parked.length ? `<details class="hq-parked"><summary>Parked projects (${parked.length})</summary><div class="p-cards">${parked.map(projectCard).join('')}</div></details>` : ''}
+    </section>
+    <div class="hq-side">
+      ${nextUpPanel(active)}
+      ${momentumPanel(days)}
+      ${sparksPanel()}
+    </div>
+  </div>`;
+}
+function examplesBanner(){
+  if (S.ui.confirm === 'examples') return `<div class="confirm"><p>Delete every project and idea marked Example? Your own work stays.</p><div class="row"><button class="btn sm danger" data-action="clear-ex">Delete examples</button><button class="btn sm" data-action="cancel">Cancel</button></div></div>`;
+  return `<div class="banner"><p><b>Sample data is loaded so you can click around.</b> Anything marked Example can be cleared in one go. The Foundry website project and its feature ideas are a real starting roadmap for building this site.</p><button class="btn sm" data-action="ask-clear-ex">Clear examples</button></div>`;
+}
+function projectCard(p){
+  const st = projStats(p); const stage = stageOf(p.stage);
+  const links = TOOLS.filter(t => p.links[t.key]).map(t => `<a class="mini-tool" href="${esc(p.links[t.key])}" target="_blank" rel="noopener noreferrer" title="Open ${t.name}" aria-label="Open ${t.name} for ${esc(p.name)}">${ic(t.icon)}</a>`).join('')
+    + p.custom.map(c => `<a class="mini-tool" href="${esc(c.url)}" target="_blank" rel="noopener noreferrer" title="Open ${esc(c.label)}" aria-label="Open ${esc(c.label)}">${ic('link')}</a>`).join('');
+  const secs = st.secs.slice(0,4).map(x => `<li class="k-${x.s.kind}"><span class="ms-name">${esc(x.s.name)}</span>${bar('m-'+x.s.id, x.pct)}<span class="ms-pct">${x.pct}%</span></li>`).join('');
+  const more = st.secs.length > 4 ? `<li class="ms-more">+ ${st.secs.length - 4} more</li>` : '';
+  return `<article class="p-card">
+    <div class="pc-top"><span class="chip stage">${stage.label}</span>${p.example ? '<span class="chip ex">Example</span>' : ''}${p.parked ? '<span class="chip">Parked</span>' : ''}</div>
+    <h3 class="pc-name"><a class="pc-link" href="#project-${p.id}" data-nav>${esc(p.name)}</a></h3>
+    ${p.pitch ? `<p class="pc-pitch">${esc(p.pitch)}</p>` : ''}
+    <div class="pc-overall"><span class="pc-pct">${st.pct}%</span><span class="pc-of">${st.done} of ${st.total} goals</span></div>
+    ${segBar(st)}
+    ${secs ? `<ul class="mini-secs">${secs}${more}</ul>` : '<p class="muted small" style="margin:0">No sections yet</p>'}
+    ${links ? `<div class="pc-links">${links}</div>` : ''}
+  </article>`;
+}
+function nextUp(active){
+  const per = active.map(p => p.sections.map(s => ({p, s, g: s.goals.find(g => !g.done)})).filter(x => x.g));
+  const out = [];
+  for (let i = 0; out.length < 7; i++) {
+    let added = false;
+    for (const arr of per) { if (arr[i]) { out.push(arr[i]); added = true; if (out.length >= 7) break; } }
+    if (!added) break;
+  }
+  return out;
+}
+function nextUpPanel(active){
+  const items = nextUp(active);
+  return `<section class="panel" aria-labelledby="h-next">
+    <div class="panel-head"><h2 class="h2" id="h-next">Next up</h2><span class="muted small">First open goal per section</span></div>
+    ${items.length ? `<ul class="nextup">${items.map(({p,s,g}) => `<li class="goal k-${s.kind}">
+      <input type="checkbox" class="cb" id="nu-${g.id}" data-change="goal" data-pid="${p.id}" data-sid="${s.id}" data-gid="${g.id}">
+      <label class="goal-label" for="nu-${g.id}"><span class="box">${ic('check')}</span><span><span class="gt">${esc(g.text)}</span><span class="nu-meta"><span class="swatch sm"></span>${esc(p.name)} · ${esc(s.name)}</span></span></label>
+    </li>`).join('')}</ul>` : `<p class="muted" style="margin:0">Nothing open. Add goals to a project and they show up here.</p>`}
+  </section>`;
+}
+function momentumPanel(days){
+  const max = Math.max(1, ...days.map(d => d.n)); const total = days.reduce((a,d) => a + d.n, 0);
+  const fmt = t => new Date(t).toLocaleDateString(undefined,{month:'short',day:'numeric'});
+  const cols = days.map((d, i) => {
+    const last = i === days.length - 1; const h = d.n ? Math.max(5, d.n/max*100) : 0;
+    const tip = `${last ? 'Today' : fmt(d.t)}: ${d.n} goal${d.n === 1 ? '' : 's'} checked`;
+    return `<div class="mom-col${last ? ' today' : ''}" tabindex="0" role="img" aria-label="${esc(tip)}" data-tip="${esc(tip)}"><i style="height:${h}%"></i></div>`;
+  }).join('');
+  return `<section class="panel" aria-labelledby="h-mom">
+    <div class="panel-head"><h2 class="h2" id="h-mom">Momentum</h2><span class="muted small">Goals checked per day, last 14 days</span></div>
+    <div class="mom">
+      <div class="mom-y" aria-hidden="true"><span>${max}</span><span>0</span></div>
+      <div class="mom-plot"><div class="mom-bars">${cols}</div><div class="mom-x" aria-hidden="true"><span>${fmt(days[0].t)}</span><span>Today</span></div></div>
+    </div>
+    <p class="muted small" style="margin:0">${total} checked in two weeks${total ? `, best day ${max}` : ''}.</p>
+  </section>`;
+}
+function sparksPanel(){
+  const recent = [...S.ideas.values()].sort((a,b) => b.createdAt - a.createdAt).slice(0,3);
+  return `<section class="panel" aria-labelledby="h-sparks">
+    <div class="panel-head"><h2 class="h2" id="h-sparks">Fresh sparks</h2><a href="#notebook" data-nav class="linkish">Open notebook</a></div>
+    <form data-form="hq-jot" class="row"><input id="hq-jot" placeholder="Jot an idea in one line" aria-label="Jot an idea" autocomplete="off"><button class="btn sm hl">Save</button></form>
+    ${recent.length ? `<ul class="sparks">${recent.map(i => `<li><span class="spark-t">${esc(firstLine(i.text))}</span><span class="small muted">${ago(i.createdAt)}</span></li>`).join('')}</ul>` : ''}
+  </section>`;
+}
+
+/* ---------- notebook ---------- */
+function allTags(){
+  const c = new Map();
+  for (const i of S.ideas.values()) for (const t of i.tags) c.set(t, (c.get(t)||0) + 1);
+  return [...c.entries()].sort((a,b) => b[1] - a[1]).slice(0,8).map(x => x[0]);
+}
+function filteredIdeas(){
+  const f = S.ui.filter, q = S.ui.q.trim().toLowerCase();
+  return [...S.ideas.values()].filter(i => {
+    if (f === 'pinned' && !i.pinned) return false;
+    if (f === 'hot' && i.spark < 3) return false;
+    if (f === 'linked' && !i.projectId) return false;
+    if (f.startsWith('tag:') && !i.tags.includes(f.slice(4))) return false;
+    if (q && !(i.text.toLowerCase().includes(q) || i.tags.some(t => t.includes(q)))) return false;
+    return true;
+  }).sort(ideaSort);
+}
+function sparkPicker(action, val, extra=''){
+  return `<div class="spark-pick" role="radiogroup" aria-label="Spark level"><span class="sp-lbl">Spark</span>${[1,2,3].map(n =>
+    `<button type="button" class="spk${n <= val ? ' on' : ''}" data-action="${action}" data-n="${n}" ${extra} role="radio" aria-checked="${n === val}" aria-label="${SPARK[n]}" title="${SPARK[n]}">${ic('bolt','fill')}</button>`).join('')}</div>`;
+}
+function projectOptions(sel){
+  return `<option value="">No project</option>` + sortedProjects().map(p => `<option value="${p.id}"${p.id === sel ? ' selected' : ''}>${esc(p.name)}</option>`).join('');
+}
+function renderNotebook(){
+  const ideas = filteredIdeas(); const tags = allTags();
+  const fl = [['all','All'],['pinned','Pinned'],['hot','Hot'],['linked','In a project'], ...tags.map(t => ['tag:'+t, '#'+t])];
+  return `
+  <header class="page-head"><div><p class="eyebrow">Notebook</p><h1 class="h-page">Every business starts as a <span class="hlmark">scribble</span>.</h1><p class="lede">Catch ideas the moment they hit. Rate the spark, tag them, and turn the good ones into projects.</p></div></header>
+  <form class="capture" data-form="capture">
+    <div class="cap-prompt"><span class="cap-q">${ic('bolt','fill')} ${esc(PROMPTS[S.ui.prompt])}</span><button type="button" class="linkish" data-action="next-prompt">Another prompt</button></div>
+    <label class="sr" for="cap-text">New idea</label>
+    <textarea id="cap-text" rows="3" placeholder="Jot it down before it's gone. The first line becomes the title."></textarea>
+    <div class="cap-row">
+      <input id="cap-tags" placeholder="Tags, separated by commas" aria-label="Tags" autocomplete="off">
+      ${sparkPicker('cap-spark', S.ui.capSpark)}
+      <select id="cap-proj" aria-label="Link to a project">${projectOptions('')}</select>
+      <button class="btn primary">Save idea</button>
+    </div>
+  </form>
+  <div class="nb-tools">
+    <input id="nb-search" type="search" value="${esc(S.ui.q)}" placeholder="Search ideas" aria-label="Search ideas" autocomplete="off">
+    <div class="filters" role="group" aria-label="Filter ideas">${fl.map(([k, l]) => `<button class="fchip" data-action="filter" data-f="${esc(k)}" aria-pressed="${S.ui.filter === k}">${esc(l)}</button>`).join('')}</div>
+  </div>
+  ${ideas.length ? `<div class="notes">${ideas.map(ideaCard).join('')}</div>` :
+    `<div class="card empty-state"><h2 class="h2">${S.ideas.size ? 'No ideas match that filter' : 'Your notebook is empty'}</h2><p>${S.ideas.size ? 'Try another filter or clear the search.' : 'Write the first thing on your mind above. Half-baked is fine.'}</p></div>`}`;
+}
+function fmtAI(text){
+  return String(text||'').split(/\n+/).filter(l => l.trim()).map(l => {
+    const m = /^\s*[-*•]?\s*\**([A-Z][^:]{1,32}):\**\s*(.*)$/.exec(l);
+    return m ? `<p><b>${esc(m[1])}:</b> ${esc(m[2].replace(/\*\*/g,''))}</p>` : `<p>${esc(l.replace(/\*\*/g,''))}</p>`;
+  }).join('');
+}
+function ideaCard(i){
+  if (S.ui.editIdea === i.id) {
+    return `<article class="note" id="note-${i.id}"><form data-form="edit-idea" data-id="${i.id}" style="display:grid;gap:8px">
+      <label class="sr" for="ie-${i.id}">Idea</label><textarea id="ie-${i.id}" rows="5">${esc(i.text)}</textarea>
+      <input id="iet-${i.id}" value="${esc(i.tags.join(', '))}" placeholder="Tags, separated by commas" aria-label="Tags" autocomplete="off">
+      <label class="sr" for="iep-${i.id}">Project</label><select id="iep-${i.id}">${projectOptions(i.projectId)}</select>
+      <div class="row"><button class="btn sm primary">Save</button><button type="button" class="btn sm" data-action="cancel">Cancel</button></div>
+    </form></article>`;
+  }
+  const lines = i.text.split('\n'); const title = lines[0]; const body = lines.slice(1).join('\n').trim();
+  const proj = i.projectId && P(i.projectId);
+  const st = S.ui.stress && S.ui.stress.id === i.id ? S.ui.stress : null;
+  let ai = '';
+  if (st && st.busy) ai = `<div class="ai-box"><div class="ai-head"><span>Claude's stress test</span><button class="btn sm" data-action="idea-stop">${ic('stop')} Stop</button></div><div class="ai-text" id="stress-${i.id}">${st.text ? fmtAI(st.text) : '<p class="thinking">Thinking</p>'}</div></div>`;
+  else if (i.ai) ai = `<details class="ai-box"${st && st.open ? ' open' : ''}><summary>Claude's stress test · ${ago(i.ai.at)}</summary><div class="ai-text">${fmtAI(i.ai.text)}</div>${aiOn() ? `<div class="row"><button class="linkish" data-action="idea-stress" data-id="${i.id}">Run it again</button></div>` : ''}</details>`;
+  if (st && st.error) ai += `<p class="err">${esc(st.error)}</p>`;
+  return `<article class="note${i.pinned ? ' pinned' : ''}" id="note-${i.id}">
+    <div class="note-top">${sparkPicker('idea-spark', i.spark, `data-id="${i.id}"`)}${i.example ? '<span class="chip ex">Example</span>' : ''}<span class="note-age">${ago(i.createdAt)}</span></div>
+    <h3 class="note-title">${esc(title)}</h3>
+    ${body ? `<p class="note-body">${esc(body)}</p>` : ''}
+    ${i.tags.length ? `<div class="tags">${i.tags.map(t => `<span class="tag">#${esc(t)}</span>`).join('')}</div>` : ''}
+    ${proj ? `<a class="note-proj" href="#project-${proj.id}" data-nav>${ic('arrow')} ${esc(proj.name)}</a>` : ''}
+    ${ai}
+    <div class="note-actions">
+      <button class="icon-btn" data-action="idea-pin" data-id="${i.id}" aria-pressed="${i.pinned}" aria-label="${i.pinned ? 'Unpin' : 'Pin'} idea" title="${i.pinned ? 'Unpin' : 'Pin to top'}">${ic('pin')}</button>
+      <button class="icon-btn" data-action="idea-edit" data-id="${i.id}" aria-label="Edit idea" title="Edit">${ic('pencil')}</button>
+      <button class="icon-btn" data-action="idea-del" data-id="${i.id}" aria-label="Delete idea" title="Delete">${ic('trash')}</button>
+      <span class="grow"></span>
+      ${aiOn() && !i.ai && !(st && st.busy) ? `<button class="btn sm" data-action="idea-stress" data-id="${i.id}" title="Ask Claude for a quick reality check">${ic('wand')} Stress-test</button>` : ''}
+      ${!proj ? `<button class="btn sm" data-action="idea-promote" data-id="${i.id}">${ic('rocket')} Make it a project</button>` : ''}
+    </div>
+  </article>`;
+}
+
+/* ---------- project ---------- */
+function renderProject(id){
+  const p = P(id);
+  if (!p) return `<div class="card empty-state"><h1 class="h2">This project isn't here</h1><p>It may have been deleted, or the link is out of date.</p><a class="btn" href="#hq" data-nav>Back to HQ</a></div>`;
+  const st = projStats(p); const idx = Math.max(0, STAGES.findIndex(s => s.key === p.stage));
+  const editing = S.ui.editProj === p.id;
+  const linked = [...S.ideas.values()].filter(i => i.projectId === p.id).sort(ideaSort);
+  const remaining = st.total - st.done;
+  return `
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="#hq" data-nav>HQ</a><span aria-hidden="true">/</span><span>${esc(p.name)}</span></nav>
+  <header class="p-head">
+    ${editing ? `<form class="edit-form" data-form="edit-proj" data-pid="${p.id}">
+        <label>Project name<input id="ep-name-${p.id}" value="${esc(p.name)}" maxlength="80" autocomplete="off"></label>
+        <label>One-line pitch<input id="ep-pitch-${p.id}" value="${esc(p.pitch)}" maxlength="240" placeholder="Who is it for and what does it do?" autocomplete="off"></label>
+        <div class="row"><button class="btn sm primary">Save</button><button type="button" class="btn sm" data-action="cancel">Cancel</button></div>
+      </form>` : `
+      <div class="p-title">
+        <div class="chips"><span class="chip stage">${stageOf(p.stage).label} stage</span>${p.parked ? '<span class="chip">Parked</span>' : ''}${p.example ? '<span class="chip ex">Example</span>' : ''}</div>
+        <h1 class="h-page">${esc(p.name)}</h1>
+        ${p.pitch ? `<p class="lede">${esc(p.pitch)}</p>` : ''}
+      </div>
+      <div class="head-actions">
+        <button class="btn sm" data-action="edit-proj" data-pid="${p.id}">${ic('pencil')} Edit</button>
+        <button class="btn sm" data-action="park" data-pid="${p.id}">${ic(p.parked ? 'play' : 'pause')} ${p.parked ? 'Unpark' : 'Park'}</button>
+        <button class="btn sm ghost" data-action="ask-del-proj" data-pid="${p.id}">${ic('trash')} Delete</button>
+      </div>`}
+  </header>
+  ${S.ui.confirm === 'proj:' + p.id ? `<div class="confirm"><p>Delete “${esc(p.name)}” and its ${st.total} goals? Linked ideas stay in your notebook.</p><div class="row"><button class="btn sm danger" data-action="del-proj" data-pid="${p.id}">Delete project</button><button class="btn sm" data-action="cancel">Cancel</button></div></div>` : ''}
+  <ol class="stages" aria-label="Project stage">${STAGES.map((s, i) => `<li><button class="stage-btn${i < idx ? ' past' : ''}${i === idx ? ' now' : ''}" data-action="set-stage" data-pid="${p.id}" data-stage="${s.key}"${i === idx ? ' aria-current="step"' : ''}><span class="stage-n">${i < idx ? '✓' : i + 1}</span><span><b>${s.label}</b><small>${s.hint}</small></span></button></li>`).join('')}</ol>
+  <div class="p-top">
+    <section class="card overview" aria-labelledby="h-ov">
+      <span class="label" id="h-ov">Overall progress</span>
+      <div class="ov-row"><span class="ov-pct">${st.pct}<small>%</small></span><p class="ov-of"><b>${st.done}</b> of <b>${st.total}</b> goals done${st.total ? `<br>${remaining ? remaining + ' to go' : 'All done'}` : ''}</p></div>
+      ${segBar(st, true)}
+      ${st.secs.length ? `<ul class="legend">${st.secs.map(x => `<li class="k-${x.s.kind}"><span class="swatch sm"></span>${esc(x.s.name)} <b>${x.pct}%</b></li>`).join('')}</ul>` : '<p class="muted small" style="margin:0">Add a section to start tracking.</p>'}
+    </section>
+    <section class="card launchpad" aria-labelledby="h-lp">
+      <div class="panel-head"><h2 class="h2" id="h-lp">Launchpad</h2><span class="muted small">One click to where the work lives</span></div>
+      ${launchpad(p)}
+    </section>
+  </div>
+  <section aria-labelledby="h-secs">
+    <div class="sec-title"><h2 class="h2" id="h-secs">Sections</h2><span class="muted small">Each part of the business gets its own goals and progress bar</span></div>
+    <div class="secs">${p.sections.map(s => sectionCard(p, s)).join('')}${addSectionPanel(p)}</div>
+  </section>
+  <section aria-labelledby="h-pi">
+    <div class="sec-title"><h2 class="h2" id="h-pi">Ideas for this project</h2><span class="muted small">${linked.length} in the notebook</span></div>
+    <form data-form="p-jot" data-pid="${p.id}" class="row" style="max-width:560px;margin-bottom:18px"><input id="pj-${p.id}" placeholder="Jot an idea for ${esc(p.name)}" aria-label="New idea for this project" autocomplete="off"><button class="btn sm hl">Save</button></form>
+    ${linked.length ? `<div class="notes">${linked.map(ideaCard).join('')}</div>` : ''}
+  </section>`;
+}
+function launchpad(p){
+  const tiles = TOOLS.map(t => {
+    const url = p.links[t.key];
+    if (url) return `<div class="tool on"><a class="tool-main" href="${esc(url)}" target="_blank" rel="noopener noreferrer"><span class="tool-ic">${ic(t.icon)}</span><span class="tool-txt"><b>${t.name}</b><small>${esc(hostOf(url))}</small></span><span class="tool-go">${ic('ext')}</span></a><button class="icon-btn tool-edit" data-action="link-edit" data-pid="${p.id}" data-key="${t.key}" aria-label="Edit ${t.name} link" title="Edit link">${ic('pencil')}</button></div>`;
+    return `<button class="tool off" data-action="link-edit" data-pid="${p.id}" data-key="${t.key}"><span class="tool-ic">${ic(t.icon)}</span><span class="tool-txt"><b>${t.name}</b><small>Connect</small></span><span class="tool-go">${ic('plus')}</span></button>`;
+  });
+  for (const c of p.custom) tiles.push(`<div class="tool on"><a class="tool-main" href="${esc(c.url)}" target="_blank" rel="noopener noreferrer"><span class="tool-ic">${ic('link')}</span><span class="tool-txt"><b>${esc(c.label)}</b><small>${esc(hostOf(c.url))}</small></span><span class="tool-go">${ic('ext')}</span></a><button class="icon-btn tool-edit" data-action="link-edit" data-pid="${p.id}" data-key="c:${c.id}" aria-label="Edit ${esc(c.label)} link" title="Edit link">${ic('pencil')}</button></div>`);
+  tiles.push(`<button class="tool off" data-action="link-edit" data-pid="${p.id}" data-key="c:new"><span class="tool-ic">${ic('link')}</span><span class="tool-txt"><b>Any other tool</b><small>Figma, Notion, Stripe…</small></span><span class="tool-go">${ic('plus')}</span></button>`);
+  const gh = ghParse(p.links.github);
+  let extra = '';
+  if (gh) {
+    const base = `https://github.com/${encodeURIComponent(gh.owner)}/${encodeURIComponent(gh.repo)}`;
+    extra = `<div class="gh-extra"><span class="muted">${esc(gh.owner)}/${esc(gh.repo)}</span>
+      <a href="${base}/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+      <a href="${base}/pulls" target="_blank" rel="noopener noreferrer">Pull requests</a>
+      <a href="${base}/actions" target="_blank" rel="noopener noreferrer">Actions</a>
+      <a href="https://github.dev/${encodeURIComponent(gh.owner)}/${encodeURIComponent(gh.repo)}" target="_blank" rel="noopener noreferrer">github.dev</a>
+      ${!p.links.vscode ? `<button class="linkish" data-action="fill-vscode" data-pid="${p.id}">${ic('code')} Link VS Code to this repo</button>` : ''}</div>`;
+  }
+  return `<div class="launch">${tiles.join('')}</div>${extra}${linkForm(p)}`;
+}
+function linkForm(p){
+  const le = S.ui.linkEdit; if (!le || le.pid !== p.id) return '';
+  const isCustom = le.key.startsWith('c:'); const t = TOOLS.find(t => t.key === le.key);
+  const cur = isCustom && le.key !== 'c:new' ? p.custom.find(c => 'c:' + c.id === le.key) : null;
+  const url = t ? (p.links[t.key] || '') : (cur ? cur.url : '');
+  const k = le.key.replace(':','-');
+  return `<form class="link-form" data-form="link" data-pid="${p.id}" data-key="${esc(le.key)}">
+    <b>${t ? esc(t.name) + ' link' : cur ? 'Edit ' + esc(cur.label) : 'Add a link'}</b>
+    ${isCustom ? `<input id="lf-label-${k}" value="${esc(cur ? cur.label : '')}" placeholder="Name it, like Figma or Stripe" aria-label="Link name" maxlength="40" autocomplete="off">` : ''}
+    <div class="row"><input id="lf-url-${k}" value="${esc(url)}" placeholder="${esc(t ? t.ph : 'https://…')}" aria-label="Link address" autocomplete="off"><button class="btn sm primary">Save</button></div>
+    <p class="hint">${esc(t ? t.tip : 'Any tool this project lives in: Figma, Notion, Stripe, Google Drive, Canva, Vercel.')}</p>
+    ${S.ui.linkErr ? `<p class="err">${esc(S.ui.linkErr)}</p>` : ''}
+    <div class="row">${url ? `<button type="button" class="btn sm ghost" data-action="link-remove" data-pid="${p.id}" data-key="${esc(le.key)}">${ic('trash')} Remove link</button>` : ''}<button type="button" class="btn sm ghost" data-action="cancel">Cancel</button></div>
+  </form>`;
+}
+function renderGoal(p, s, g){
+  if (S.ui.editGoal === g.id) {
+    return `<li class="goal editing"><form data-form="edit-goal" data-pid="${p.id}" data-sid="${s.id}" data-gid="${g.id}"><input id="ge-${g.id}" value="${esc(g.text)}" aria-label="Goal text" maxlength="200" autocomplete="off"><button class="btn sm primary">Save</button><button type="button" class="btn sm" data-action="cancel">Cancel</button></form></li>`;
+  }
+  return `<li class="goal${g.done ? ' done' : ''}">
+    <input type="checkbox" class="cb" id="g-${g.id}"${g.done ? ' checked' : ''} data-change="goal" data-pid="${p.id}" data-sid="${s.id}" data-gid="${g.id}">
+    <label class="goal-label" for="g-${g.id}"><span class="box">${ic('check')}</span><span class="gt">${esc(g.text)}</span></label>
+    <span class="goal-actions"><button class="icon-btn" data-action="edit-goal" data-gid="${g.id}" aria-label="Edit goal" title="Edit">${ic('pencil')}</button><button class="icon-btn" data-action="del-goal" data-pid="${p.id}" data-sid="${s.id}" data-gid="${g.id}" aria-label="Delete goal" title="Delete">${ic('x')}</button></span>
+  </li>`;
+}
+function sectionCard(p, s){
+  const t = s.goals.length, d = s.goals.filter(g => g.done).length, pct = t ? Math.round(d/t*100) : 0;
+  const sug = S.ui.suggest && S.ui.suggest.sid === s.id ? S.ui.suggest : null;
+  let sugBox = '';
+  if (sug) {
+    sugBox = `<div class="suggest"><div class="ai-head"><span>Claude's suggestions</span>${sug.busy ? `<button class="btn sm" data-action="suggest-stop">${ic('stop')} Stop</button>` : `<button class="icon-btn" data-action="suggest-close" aria-label="Close suggestions">${ic('x')}</button>`}</div>
+      ${sug.busy ? '<p class="thinking small" style="margin:0">Thinking</p>' : ''}
+      ${sug.error ? `<p class="err">${esc(sug.error)}</p>` : ''}
+      ${sug.items && sug.items.length ? `<ul>${sug.items.map((x, n) => `<li><span>${esc(x)}</span><button class="btn sm" data-action="suggest-add" data-pid="${p.id}" data-sid="${s.id}" data-i="${n}">${ic('plus')} Add</button></li>`).join('')}</ul>
+        <div class="row"><button class="btn sm primary" data-action="suggest-all" data-pid="${p.id}" data-sid="${s.id}">Add all</button><button class="btn sm ghost" data-action="suggest" data-pid="${p.id}" data-sid="${s.id}">Try different ones</button></div>` : ''}
+    </div>`;
+  }
+  return `<section class="sec k-${s.kind}" aria-labelledby="sh-${s.id}">
+    <div class="sec-top">
+      <div class="sec-head">
+        ${S.ui.renameSec === s.id ? `<form data-form="rename-sec" data-pid="${p.id}" data-sid="${s.id}"><input id="rn-${s.id}" value="${esc(s.name)}" aria-label="Section name" maxlength="40" autocomplete="off"><button class="btn sm primary">Save</button></form>` :
+          `<h3 id="sh-${s.id}"><span class="swatch"></span><span class="nm">${esc(s.name)}</span></h3>
+           <span class="sec-count">${d}/${t}</span>
+           <button class="icon-btn" data-action="rename-sec" data-sid="${s.id}" aria-label="Rename ${esc(s.name)}" title="Rename">${ic('pencil')}</button>
+           <button class="icon-btn" data-action="ask-del-sec" data-sid="${s.id}" aria-label="Delete ${esc(s.name)}" title="Delete section">${ic('trash')}</button>`}
+      </div>
+      <div class="sec-progress">${bar('s-' + s.id, pct, 'thick')}<span class="sec-pct">${t && pct === 100 ? ic('check') + 'Done' : pct + '%'}</span></div>
+    </div>
+    ${S.ui.confirm === 'sec:' + s.id ? `<div class="confirm"><p>Delete ${esc(s.name)} and its ${t} goals?</p><div class="row"><button class="btn sm danger" data-action="del-sec" data-pid="${p.id}" data-sid="${s.id}">Delete</button><button class="btn sm" data-action="cancel">Cancel</button></div></div>` : ''}
+    ${t ? `<ul class="goals">${s.goals.map(g => renderGoal(p, s, g)).join('')}</ul>` : `<p class="sec-empty">No goals yet. Break the work into steps you can finish in a day.</p>`}
+    <form class="add-goal" data-form="add-goal" data-pid="${p.id}" data-sid="${s.id}"><input id="ag-${s.id}" placeholder="Add a small goal" aria-label="Add a goal to ${esc(s.name)}" maxlength="200" autocomplete="off"><button class="btn sm">Add</button></form>
+    ${sugBox}
+    ${aiOn() && !sug ? `<div class="sec-foot"><button class="linkish" data-action="suggest" data-pid="${p.id}" data-sid="${s.id}">${ic('wand')} Suggest goals with Claude</button></div>` : ''}
+  </section>`;
+}
+function addSectionPanel(p){
+  if (S.ui.addSec !== p.id) return `<button class="sec add-sec-btn" data-action="add-sec-open" data-pid="${p.id}">${ic('plus')}<b>Add a section</b><span>Coding, Marketing, Finance, or name your own</span></button>`;
+  return `<section class="sec add-sec" aria-labelledby="h-addsec">
+    <div class="sec-head"><h3 id="h-addsec">Add a section</h3><button class="icon-btn" data-action="cancel" aria-label="Close">${ic('x')}</button></div>
+    <div class="kind-grid">${KIND_ORDER.map(k => `<button class="kind k-${k}" data-action="add-sec" data-pid="${p.id}" data-kind="${k}"><span class="swatch"></span><b>${KINDS[k].label}</b><small>${KINDS[k].blurb}</small></button>`).join('')}</div>
+    <label class="check"><input type="checkbox" id="as-starter"${S.ui.addStarter ? ' checked' : ''}> Include 5 starter goals</label>
+    <form data-form="add-custom-sec" data-pid="${p.id}" class="row"><input id="as-custom" placeholder="Or name your own, like Fundraising" aria-label="Custom section name" maxlength="40" autocomplete="off"><button class="btn sm">Add</button></form>
+  </section>`;
+}
+
+/* ---------- modals ---------- */
+function shell(title, body){
+  return `<div class="modal-scrim" data-action="close-modal"></div><div class="modal" role="dialog" aria-modal="true" aria-labelledby="m-title"><div class="modal-head"><h2 id="m-title">${title}</h2><button class="icon-btn" data-action="close-modal" aria-label="Close">${ic('x')}</button></div>${body}</div>`;
+}
+function renderModal(){
+  const m = S.modal; if (!m) return '';
+  if (m.type === 'jot') {
+    return shell('Jot an idea', `<form data-form="jot">
+      <label class="field"><span>Idea</span><textarea id="jot-text" rows="4" placeholder="First line is the title. Add detail below if you want."></textarea></label>
+      <div class="row" style="flex-wrap:wrap"><input id="jot-tags" placeholder="Tags, separated by commas" aria-label="Tags" style="flex:1;min-width:180px" autocomplete="off">${sparkPicker('jot-spark', m.spark)}</div>
+      <label class="field"><span>Project (optional)</span><select id="jot-proj">${projectOptions(m.projectId)}</select></label>
+      <div class="modal-actions"><span class="muted small" style="margin-right:auto;align-self:center">Tip: ⌘/Ctrl + Enter saves</span><button type="button" class="btn" data-action="close-modal">Cancel</button><button class="btn primary">Save to notebook</button></div>
+    </form>`);
+  }
+  // new project
+  const plan = m.plan;
+  const aiBlock = !aiOn() ? '' : m.ai ? `<div class="ai-row"><p class="thinking">Claude is drafting sections and goals</p><button type="button" class="btn sm" data-action="np-stop">${ic('stop')} Stop</button></div>`
+    : plan ? '' : `<div class="ai-row"><p>Let Claude draft the sections and first goals from your name and pitch. You can edit everything after.</p><button type="button" class="btn sm hl" data-action="np-draft">${ic('wand')} Draft a plan</button></div>`;
+  return shell(m.fromIdea ? 'Turn this idea into a project' : 'New project', `<form data-form="new-project">
+    <label class="field"><span>Project name</span><input id="np-name" value="${esc(m.name)}" maxlength="80" placeholder="e.g. Corner Cup coffee subscription" autocomplete="off"></label>
+    <label class="field"><span>One-line pitch</span><input id="np-pitch" value="${esc(m.pitch)}" maxlength="240" placeholder="Who is it for, and what does it do for them?" autocomplete="off"></label>
+    <fieldset class="field"><legend>Stage</legend><div class="pick">${STAGES.map(s => `<button type="button" data-action="np-stage" data-stage="${s.key}" aria-pressed="${m.stage === s.key}">${s.label}</button>`).join('')}</div></fieldset>
+    ${plan ? `<div class="plan"><div class="panel-head"><b>Claude's plan</b><button type="button" class="linkish" data-action="np-discard">Pick sections myself instead</button></div>
+        <div class="plan-secs">${plan.map(x => `<div class="k-${x.kind}"><h4><span class="swatch sm"></span>${esc(KINDS[x.kind].label)}</h4><ul>${x.goals.map(g => `<li>${esc(g)}</li>`).join('')}</ul></div>`).join('')}</div></div>` :
+      `<fieldset class="field"><legend>Sections</legend><div class="pick">${KIND_ORDER.map(k => `<button type="button" class="k-${k}" data-action="np-kind" data-kind="${k}" aria-pressed="${m.kinds.has(k)}"><span class="swatch sm"></span>${KINDS[k].label}</button>`).join('')}</div>
+        <input id="np-custom" placeholder="Add your own sections, separated by commas (optional)" aria-label="Custom sections" autocomplete="off">
+        <label class="check"><input type="checkbox" id="np-starter"${m.starter ? ' checked' : ''}> Start each section with 5 suggested goals</label></fieldset>`}
+    ${aiBlock}
+    ${m.aiError ? `<p class="err">${esc(m.aiError)}</p>` : ''}
+    ${m.error ? `<p class="err">${esc(m.error)}</p>` : ''}
+    <div class="modal-actions"><button type="button" class="btn" data-action="close-modal">Cancel</button><button class="btn primary">${ic('rocket')} Create project</button></div>
+  </form>`);
+}
+
+/* ================= actions ================= */
+function clearEdits(){
+  if (S.ui.suggest && S.ui.suggest.ctl) S.ui.suggest.ctl.abort();
+  Object.assign(S.ui, {editGoal:null, editIdea:null, renameSec:null, linkEdit:null, linkErr:null, editProj:null, confirm:null, addSec:null, suggest:null});
+}
+function closeModal(){
+  if (S.modal && S.modal.ai && S.modal.ai.ctl) S.modal.ai.ctl.abort();
+  S.modal = null; render();
+}
+function openNewProject(ideaId){
+  const i = ideaId && S.ideas.get(ideaId);
+  let name = '', pitch = '';
+  if (i) { const [t, ...r] = i.text.split('\n'); name = t.trim().slice(0,80); pitch = r.join(' ').replace(/\s+/g,' ').trim().slice(0,240); }
+  S.ui.navOpen = false;
+  S.modal = {type:'new-project', fromIdea: i ? i.id : null, name, pitch, stage: i ? 'validate' : 'spark', kinds: new Set(['product','coding','marketing']), starter:true, plan:null, ai:null, aiError:null, error:null};
+  S.ui.autofocus = 'np-name'; render();
+}
+const newGoal = t => ({id: uid('g'), text: t.slice(0,200), done:false, doneAt:null, createdAt: now()});
+function newIdea(text, tags, spark, projectId){
+  return {id: uid('i'), text: text.slice(0,4000), tags, spark: spark || 1, pinned:false, example:false, projectId: projectId || null, createdAt: now(), updatedAt: now(), ai:null};
+}
+function addIdea(text, tags, spark, projectId, msg){
+  const t = text.trim(); if (!t) return false;
+  const i = newIdea(t, tags, spark, projectId && P(projectId) ? projectId : null);
+  S.ideas.set(i.id, i); saveIdea(i, true); render();
+  toast(msg || 'Saved to your notebook');
+  return true;
+}
+function toggleGoal(pid, sid, gid, checked, el){
+  const p = P(pid); const s = secOf(p, sid); const g = s && s.goals.find(g => g.id === gid);
+  if (!g) return;
+  const rect = el ? el.nextElementSibling.getBoundingClientRect() : null;
+  const wasFull = s.goals.length && s.goals.every(g => g.done);
+  const projWasFull = projStats(p).pct === 100;
+  g.done = checked; g.doneAt = checked ? now() : null;
+  saveProject(p);
+  const isFull = s.goals.length && s.goals.every(g => g.done);
+  if (!wasFull && isFull) {
+    if (rect) burst(rect.left + 10, rect.top + 10, s.kind);
+    const st = projStats(p);
+    if (st.pct === 100 && !projWasFull) toast(`Every goal in ${p.name} is done. Ready for the next stage?`);
+    else toast(`${s.name} is at 100%. Nice work.`);
+  }
+}
+function addSection(pid, kind, name){
+  const p = P(pid); if (!p) return;
+  const k = KINDS[kind] ? kind : 'custom';
+  const s = {id: uid('s'), kind: k, name: (name || KINDS[k].label).slice(0,40), goals: (k !== 'custom' && S.ui.addStarter) ? KINDS[k].starters.map(newGoal) : []};
+  p.sections.push(s); S.ui.addSec = null; S.ui.autofocus = 'ag-' + s.id;
+  saveProject(p); toast(`${s.name} section added`);
+}
+function deleteIdea(id){
+  const i = S.ideas.get(id); if (!i) return;
+  S.ideas.delete(id); persistDel('ideas', id); render();
+  toast('Idea deleted', () => { S.ideas.set(id, i); persist('ideas', i); render(); });
+}
+function deleteGoal(pid, sid, gid){
+  const p = P(pid); const s = secOf(p, sid); if (!s) return;
+  const idx = s.goals.findIndex(g => g.id === gid); if (idx < 0) return;
+  const [g] = s.goals.splice(idx, 1); saveProject(p);
+  toast('Goal deleted', () => { const p2 = P(pid); const s2 = secOf(p2, sid); if (!s2) return; s2.goals.splice(Math.min(idx, s2.goals.length), 0, g); saveProject(p2); });
+}
+function deleteSection(pid, sid){
+  const p = P(pid); if (!p) return;
+  const idx = p.sections.findIndex(s => s.id === sid); if (idx < 0) return;
+  const [s] = p.sections.splice(idx, 1); S.ui.confirm = null; saveProject(p);
+  toast(`${s.name} deleted`, () => { const p2 = P(pid); if (!p2) return; p2.sections.splice(Math.min(idx, p2.sections.length), 0, s); saveProject(p2); });
+}
+function deleteProject(pid){
+  const p = P(pid); if (!p) return;
+  const linked = [...S.ideas.values()].filter(i => i.projectId === pid);
+  S.projects.delete(pid); persistDel('projects', pid);
+  linked.forEach(i => { i.projectId = null; saveIdea(i, true); });
+  S.ui.confirm = null; S.view = {name:'hq'};
+  location.hash = 'hq'; render();
+  toast(`${p.name} deleted`, () => { S.projects.set(p.id, p); persist('projects', p); linked.forEach(i => { i.projectId = p.id; saveIdea(i, true); }); render(); });
+}
+function clearExamples(){
+  for (const p of [...S.projects.values()]) if (p.example) { S.projects.delete(p.id); persistDel('projects', p.id); }
+  for (const i of [...S.ideas.values()]) {
+    if (i.example) { S.ideas.delete(i.id); persistDel('ideas', i.id); }
+    else if (i.projectId && !S.projects.has(i.projectId)) { i.projectId = null; saveIdea(i, true); }
+  }
+  S.ui.confirm = null;
+  if (S.view.name === 'project' && !S.projects.has(S.view.id)) { S.view = {name:'hq'}; location.hash = 'hq'; }
+  render(); toast('Examples cleared');
+}
+function createProject(){
+  const m = S.modal; if (!m) return;
+  const name = ($('#np-name').value || '').trim();
+  if (!name) { m.error = 'Give the project a name first.'; S.ui.autofocus = 'np-name'; render(); return; }
+  const pitch = ($('#np-pitch').value || '').trim();
+  let sections;
+  if (m.plan) sections = m.plan.map(x => ({id: uid('s'), kind: x.kind, name: KINDS[x.kind].label, goals: x.goals.map(newGoal)}));
+  else {
+    sections = KIND_ORDER.filter(k => m.kinds.has(k)).map(k => ({id: uid('s'), kind: k, name: KINDS[k].label, goals: m.starter ? KINDS[k].starters.map(newGoal) : []}));
+    const custom = $('#np-custom') ? $('#np-custom').value : '';
+    for (const c of custom.split(',').map(x => x.trim()).filter(Boolean).slice(0,6)) sections.push({id: uid('s'), kind:'custom', name: c.slice(0,40), goals: []});
+  }
+  const p = {id: uid('p'), name: name.slice(0,80), pitch: pitch.slice(0,240), stage: m.stage, parked:false, example:false, createdAt: now(), updatedAt: now(), links:{}, custom:[], sections};
+  S.projects.set(p.id, p); saveProject(p, true);
+  if (m.fromIdea) { const i = S.ideas.get(m.fromIdea); if (i) { i.projectId = p.id; saveIdea(i, true); } }
+  S.modal = null;
+  if (location.hash === '#project-' + p.id) route(); else location.hash = 'project-' + p.id;
+  toast('Project created. Connect your tools in the Launchpad.');
+}
+
+/* ---------- Claude (sample) ---------- */
+function aiErr(e){
+  const c = e && e.code;
+  if (['not_granted','sampling_disabled','not_declared','capability_disabled','capability_removed'].includes(c)) { S.aiOff = true; return 'Claude is not available on this page, so the Claude buttons are now hidden.'; }
+  if (c === 'rate_limited') return 'Claude is busy or your usage limit was reached. Try again in a little while.';
+  if (c === 'session_expired') return 'Sign in to Claude again, then try once more.';
+  if (c === 'refused') return 'Claude could not help with this one. Try rewording it.';
+  if (c === 'invalid_json' || c === 'empty_completion') return 'The answer came back in an unexpected shape. Try again.';
+  if (c === 'prompt_too_large') return 'This is too long to send. Shorten it and try again.';
+  return 'Something interrupted the answer. Try again.';
+}
+async function stressIdea(id){
+  const i = S.ideas.get(id); if (!i || !aiOn()) return;
+  if (S.ui.stress && S.ui.stress.busy) S.ui.stress.ctl.abort();
+  const ctl = new AbortController();
+  S.ui.stress = {id, text:'', busy:true, ctl, error:null}; render();
+  const prompt = `You're a sharp, encouraging startup advisor. A founder jotted this idea in their notebook:
+
+"""
+${i.text.slice(0,3000)}
+"""
+${i.tags.length ? 'Tags: ' + i.tags.join(', ') : ''}
+
+Give a quick stress test in plain text. No Markdown: no #, no **, no bullet symbols. Use exactly these five labels, each starting its own line, each followed by one or two short sentences:
+Who it's for:
+The pain:
+Riskiest assumption:
+Cheapest test this week:
+Name ideas:
+Keep the whole answer under 170 words.`;
+  try {
+    const res = await S.ai(prompt, {signal: ctl.signal, onText: ({text}) => {
+      if (!S.ui.stress || S.ui.stress.ctl !== ctl) return;
+      S.ui.stress.text = text;
+      const el = document.getElementById('stress-' + id); if (el) el.innerHTML = fmtAI(text);
+    }});
+    if (!S.ui.stress || S.ui.stress.ctl !== ctl) return;
+    const cur = S.ideas.get(id);
+    if (cur) { cur.ai = {text: res.text.slice(0,4000), at: now()}; saveIdea(cur, true); }
+    S.ui.stress = {id, open:true, busy:false}; render();
+  } catch (e) {
+    if (!S.ui.stress || S.ui.stress.ctl !== ctl) return;
+    S.ui.stress = e && e.code === 'cancelled' ? null : {id, busy:false, error: aiErr(e)};
+    render();
+  }
+}
+async function suggestGoals(pid, sid){
+  const p = P(pid); const s = secOf(p, sid); if (!s || !aiOn()) return;
+  if (S.ui.suggest && S.ui.suggest.ctl) S.ui.suggest.ctl.abort();
+  const ctl = new AbortController();
+  S.ui.suggest = {pid, sid, busy:true, items:[], error:null, ctl}; render();
+  const prompt = `A founder is working on this project:
+Name: ${p.name}
+Pitch: ${p.pitch || '(none given)'}
+Stage: ${stageOf(p.stage).label} (${stageOf(p.stage).hint})
+
+Suggest 5 new goals for the "${s.name}" section of the project (${KINDS[s.kind].blurb.toLowerCase()}).
+Goals already in this section, so don't repeat them:
+${s.goals.map(g => '- ' + g.text).join('\n').slice(0,3000) || '(none yet)'}
+
+Each goal starts with a verb, is under 60 characters, and is small enough to finish in a day.
+Reply with only a JSON array of 5 strings.`;
+  try {
+    const out = await S.ai.json(prompt, {modelTier:'quick', signal: ctl.signal, cache:false});
+    const arr = Array.isArray(out) ? out : (out && Array.isArray(out.goals) ? out.goals : []);
+    const items = arr.map(x => String(typeof x === 'string' ? x : (x && (x.text || x.goal)) || '').trim().slice(0,200)).filter(Boolean).slice(0,6);
+    if (!S.ui.suggest || S.ui.suggest.ctl !== ctl) return;
+    S.ui.suggest = items.length ? {pid, sid, busy:false, items, error:null} : {pid, sid, busy:false, items:[], error:'Claude did not return any goals. Try again.'};
+    render();
+  } catch (e) {
+    if (!S.ui.suggest || S.ui.suggest.ctl !== ctl) return;
+    S.ui.suggest = e && e.code === 'cancelled' ? null : {pid, sid, busy:false, items:[], error: aiErr(e)};
+    render();
+  }
+}
+async function draftPlan(){
+  const m = S.modal; if (!m || !aiOn()) return;
+  const name = ($('#np-name').value || '').trim(), pitch = ($('#np-pitch').value || '').trim();
+  if (!name && !pitch) { m.aiError = 'Add a name or a pitch first so Claude knows what to plan.'; render(); return; }
+  const ctl = new AbortController();
+  m.ai = {ctl}; m.aiError = null; render();
+  const stage = stageOf(m.stage);
+  const prompt = `Plan the work for a new project so a founder can start today.
+Project name: ${name || '(none yet)'}
+Pitch: ${pitch || '(none given)'}
+Stage: ${stage.label} (${stage.hint})
+
+Choose 3 to 5 sections from this list only: Coding, Marketing, Product, Finance, Design, Operations, Sales, Legal.
+For each section, write 4 small, concrete goals. Each goal starts with a verb, is under 60 characters, and can be finished in a day or less. List goals in the order the founder should do them.
+
+Reply with only JSON in this shape:
+{"sections":[{"section":"Marketing","goals":["Write a one-sentence pitch","..."]}]}`;
+  try {
+    const out = await S.ai.json(prompt, {signal: ctl.signal});
+    if (S.modal !== m) return;
+    const seen = new Set(); const plan = [];
+    for (const x of (out && Array.isArray(out.sections) ? out.sections : [])) {
+      const label = String((x && (x.section || x.name || x.kind)) || '').trim().toLowerCase();
+      const kind = KIND_ORDER.find(k => KINDS[k].label.toLowerCase() === label);
+      const goals = (x && Array.isArray(x.goals) ? x.goals : []).map(g => String(g || '').trim().slice(0,200)).filter(Boolean).slice(0,6);
+      if (kind && !seen.has(kind) && goals.length) { seen.add(kind); plan.push({kind, goals}); }
+    }
+    m.ai = null;
+    if (plan.length) m.plan = plan; else m.aiError = 'The plan came back empty. Try again, or pick sections yourself.';
+    render();
+  } catch (e) {
+    if (S.modal !== m) return;
+    m.ai = null; if (!(e && e.code === 'cancelled')) m.aiError = aiErr(e);
+    render();
+  }
+}
+
+/* ---------- action map ---------- */
+const A = {
+  'nav-toggle': () => { S.ui.navOpen = !S.ui.navOpen; render(); },
+  'nav-close': () => { S.ui.navOpen = false; render(); },
+  'new-project': () => openNewProject(null),
+  'jot': () => { S.ui.navOpen = false; S.modal = {type:'jot', spark:1, projectId: S.view.name === 'project' ? S.view.id : ''}; S.ui.autofocus = 'jot-text'; render(); },
+  'close-modal': () => closeModal(),
+  'np-stage': d => { S.modal.stage = d.stage; render(); },
+  'np-kind': d => { const k = S.modal.kinds; k.has(d.kind) ? k.delete(d.kind) : k.add(d.kind); render(); },
+  'np-draft': () => draftPlan(),
+  'np-stop': () => { if (S.modal && S.modal.ai) S.modal.ai.ctl.abort(); },
+  'np-discard': () => { S.modal.plan = null; render(); },
+  'jot-spark': d => { S.modal.spark = +d.n; render(); },
+  'cap-spark': d => { S.ui.capSpark = +d.n; render(); },
+  'next-prompt': () => { S.ui.prompt = (S.ui.prompt + 1) % PROMPTS.length; render(); },
+  'filter': d => { S.ui.filter = d.f; render(); },
+  'idea-pin': d => { const i = S.ideas.get(d.id); if (!i) return; i.pinned = !i.pinned; saveIdea(i); },
+  'idea-spark': d => { const i = S.ideas.get(d.id); if (!i) return; i.spark = +d.n; saveIdea(i); },
+  'idea-edit': d => { clearEdits(); S.ui.editIdea = d.id; S.ui.autofocus = 'ie-' + d.id; render(); },
+  'idea-del': d => deleteIdea(d.id),
+  'idea-promote': d => openNewProject(d.id),
+  'idea-stress': d => stressIdea(d.id),
+  'idea-stop': () => { if (S.ui.stress && S.ui.stress.ctl) S.ui.stress.ctl.abort(); },
+  'set-stage': d => { const p = P(d.pid); if (!p || p.stage === d.stage) return; p.stage = d.stage; saveProject(p); toast(`Moved to ${stageOf(d.stage).label}`); },
+  'edit-proj': d => { clearEdits(); S.ui.editProj = d.pid; S.ui.autofocus = 'ep-name-' + d.pid; render(); },
+  'cancel': () => { clearEdits(); render(); },
+  'park': d => { const p = P(d.pid); if (!p) return; p.parked = !p.parked; saveProject(p); toast(p.parked ? 'Parked. It waits in the sidebar under Parked.' : 'Back in your active projects.'); },
+  'ask-del-proj': d => { S.ui.confirm = 'proj:' + d.pid; render(); },
+  'del-proj': d => deleteProject(d.pid),
+  'link-edit': d => { clearEdits(); S.ui.linkEdit = {pid: d.pid, key: d.key}; S.ui.autofocus = 'lf-url-' + d.key.replace(':','-'); render(); },
+  'link-remove': d => {
+    const p = P(d.pid); if (!p) return;
+    if (d.key.startsWith('c:')) p.custom = p.custom.filter(c => 'c:' + c.id !== d.key); else delete p.links[d.key];
+    clearEdits(); saveProject(p); toast('Link removed');
+  },
+  'fill-vscode': d => { const p = P(d.pid); const gh = p && ghParse(p.links.github); if (!gh) return; p.links.vscode = `https://vscode.dev/github/${encodeURIComponent(gh.owner)}/${encodeURIComponent(gh.repo)}`; saveProject(p); toast('VS Code now opens this repo'); },
+  'add-sec-open': d => { clearEdits(); S.ui.addSec = d.pid; render(); },
+  'add-sec': d => addSection(d.pid, d.kind),
+  'rename-sec': d => { clearEdits(); S.ui.renameSec = d.sid; S.ui.autofocus = 'rn-' + d.sid; render(); },
+  'ask-del-sec': d => { clearEdits(); S.ui.confirm = 'sec:' + d.sid; render(); },
+  'del-sec': d => deleteSection(d.pid, d.sid),
+  'edit-goal': d => { clearEdits(); S.ui.editGoal = d.gid; S.ui.autofocus = 'ge-' + d.gid; render(); },
+  'del-goal': d => deleteGoal(d.pid, d.sid, d.gid),
+  'suggest': d => suggestGoals(d.pid, d.sid),
+  'suggest-stop': () => { if (S.ui.suggest && S.ui.suggest.ctl) S.ui.suggest.ctl.abort(); },
+  'suggest-close': () => { S.ui.suggest = null; render(); },
+  'suggest-add': d => {
+    const p = P(d.pid); const s = secOf(p, d.sid); const sg = S.ui.suggest; if (!s || !sg) return;
+    const [t] = sg.items.splice(+d.i, 1); if (!t) return;
+    s.goals.push(newGoal(t)); if (!sg.items.length) S.ui.suggest = null; saveProject(p);
+  },
+  'suggest-all': d => {
+    const p = P(d.pid); const s = secOf(p, d.sid); const sg = S.ui.suggest; if (!s || !sg) return;
+    sg.items.forEach(t => s.goals.push(newGoal(t))); S.ui.suggest = null; saveProject(p); toast('Goals added');
+  },
+  'ask-clear-ex': () => { S.ui.confirm = 'examples'; render(); },
+  'clear-ex': () => clearExamples(),
+  'undo': () => { const u = S.undo; S.undo = null; hideToast(); if (u) u(); },
+};
+
+/* ---------- forms ---------- */
+const F = {
+  'add-goal': f => {
+    const inp = f.querySelector('input'); const t = inp.value.trim(); if (!t) return;
+    const p = P(f.dataset.pid); const s = secOf(p, f.dataset.sid); if (!s) return;
+    s.goals.push(newGoal(t)); inp.value = ''; S.ui.autofocus = inp.id; saveProject(p);
+  },
+  'edit-goal': f => {
+    const p = P(f.dataset.pid); const s = secOf(p, f.dataset.sid); const g = s && s.goals.find(g => g.id === f.dataset.gid);
+    const t = f.querySelector('input').value.trim(); if (!g) return;
+    S.ui.editGoal = null; if (t) g.text = t.slice(0,200); saveProject(p);
+  },
+  'rename-sec': f => {
+    const p = P(f.dataset.pid); const s = secOf(p, f.dataset.sid); if (!s) return;
+    const t = f.querySelector('input').value.trim(); S.ui.renameSec = null; if (t) s.name = t.slice(0,40); saveProject(p);
+  },
+  'add-custom-sec': f => { const inp = f.querySelector('input'); const t = inp.value.trim(); if (!t) return; inp.value = ''; addSection(f.dataset.pid, 'custom', t); },
+  'edit-proj': f => {
+    const p = P(f.dataset.pid); if (!p) return;
+    const n = $('#ep-name-' + p.id).value.trim(); const pi = $('#ep-pitch-' + p.id).value.trim();
+    if (n) p.name = n.slice(0,80); p.pitch = pi.slice(0,240); S.ui.editProj = null; saveProject(p);
+  },
+  'link': f => {
+    const p = P(f.dataset.pid); if (!p) return;
+    const key = f.dataset.key; const k = key.replace(':','-');
+    const url = normUrl($('#lf-url-' + k).value);
+    if (!url) { S.ui.linkErr = url === '' ? 'Paste a link first.' : "That link doesn't look right. Links start with https://"; render(); return; }
+    if (key.startsWith('c:')) {
+      const label = (($('#lf-label-' + k) || {}).value || '').trim() || hostOf(url).split('/')[0];
+      if (key === 'c:new') p.custom.push({id: uid('c'), label: label.slice(0,40), url});
+      else { const c = p.custom.find(c => 'c:' + c.id === key); if (c) { c.label = label.slice(0,40); c.url = url; } }
+    } else p.links[key] = url;
+    S.ui.linkEdit = null; S.ui.linkErr = null; saveProject(p); toast('Link saved. Click the tile to open it.');
+  },
+  'capture': f => {
+    const ta = $('#cap-text'); const ok = addIdea(ta.value, parseTags($('#cap-tags').value), S.ui.capSpark, $('#cap-proj').value);
+    if (!ok) { S.ui.autofocus = 'cap-text'; render(); return; }
+    ta.value = ''; $('#cap-tags').value = ''; $('#cap-proj').value = ''; S.ui.capSpark = 1; S.ui.filter = 'all'; S.ui.autofocus = 'cap-text'; render();
+  },
+  'hq-jot': f => { const inp = $('#hq-jot'); const v = inp.value; if (!v.trim()) return; inp.value = ''; S.ui.autofocus = 'hq-jot'; addIdea(v, [], 1, null); },
+  'p-jot': f => { const inp = f.querySelector('input'); const v = inp.value; if (!v.trim()) return; inp.value = ''; S.ui.autofocus = inp.id; addIdea(v, [], 1, f.dataset.pid, 'Idea saved to this project'); },
+  'jot': f => {
+    const v = $('#jot-text').value; if (!v.trim()) { S.ui.autofocus = 'jot-text'; render(); return; }
+    const tags = parseTags($('#jot-tags').value); const proj = $('#jot-proj').value; const sp = S.modal.spark;
+    S.modal = null; addIdea(v, tags, sp, proj);
+  },
+  'new-project': () => createProject(),
+  'edit-idea': f => {
+    const i = S.ideas.get(f.dataset.id); if (!i) return;
+    const t = $('#ie-' + i.id).value.trim(); if (t) i.text = t.slice(0,4000);
+    i.tags = parseTags($('#iet-' + i.id).value); const pr = $('#iep-' + i.id).value; i.projectId = pr && P(pr) ? pr : null;
+    S.ui.editIdea = null; saveIdea(i);
+  },
+};
+
+/* ================= toast, tooltip, confetti ================= */
+function toast(msg, undo){
+  const el = $('#toast');
+  el.innerHTML = `<span>${esc(msg)}</span>${undo ? '<button class="linkish" data-action="undo">Undo</button>' : ''}`;
+  el.hidden = false; S.undo = undo || null;
+  clearTimeout(S.toastT); S.toastT = setTimeout(hideToast, undo ? 7000 : 3200);
+}
+function hideToast(){ $('#toast').hidden = true; S.undo = null; }
+function showTip(el){
+  const tip = $('#tip'); tip.textContent = el.dataset.tip; tip.hidden = false;
+  const r = el.getBoundingClientRect(); const w = tip.offsetWidth, h = tip.offsetHeight;
+  const x = Math.max(8, Math.min(innerWidth - w - 8, r.left + r.width/2 - w/2));
+  let y = r.top - h - 8; if (y < 8) y = r.bottom + 8;
+  tip.style.transform = `translate(${Math.round(x)}px,${Math.round(y)}px)`;
+}
+function hideTip(){ const t = $('#tip'); if (t) t.hidden = true; }
+function burst(x, y, kind){
+  if (reduced) return;
+  const cv = $('#confetti'); const ctx = cv.getContext('2d'); if (!ctx) return;
+  const dpr = window.devicePixelRatio || 1;
+  cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; ctx.scale(dpr, dpr);
+  const css = getComputedStyle(document.documentElement);
+  const cols = [css.getPropertyValue('--c-' + kind).trim() || '#2a78d6', css.getPropertyValue('--hl').trim() || '#FFD43B', css.getPropertyValue('--ink').trim() || '#141D33'];
+  const parts = Array.from({length: 80}, () => ({x, y, vx: (Math.random() - .5) * 10, vy: -Math.random() * 10 - 3, r: Math.random() * 6, vr: (Math.random() - .5) * .35, w: 5 + Math.random() * 5, h: 3 + Math.random() * 4, c: cols[Math.floor(Math.random() * cols.length)]}));
+  const t0 = performance.now(); cancelAnimationFrame(S.confettiRaf);
+  const step = t => {
+    const el = t - t0; ctx.clearRect(0, 0, innerWidth, innerHeight);
+    for (const q of parts) {
+      q.vy += .32; q.vx *= .99; q.x += q.vx; q.y += q.vy; q.r += q.vr;
+      ctx.save(); ctx.translate(q.x, q.y); ctx.rotate(q.r); ctx.globalAlpha = Math.max(0, 1 - el / 1500); ctx.fillStyle = q.c; ctx.fillRect(-q.w/2, -q.h/2, q.w, q.h); ctx.restore();
+    }
+    if (el < 1500) S.confettiRaf = requestAnimationFrame(step); else ctx.clearRect(0, 0, innerWidth, innerHeight);
+  };
+  S.confettiRaf = requestAnimationFrame(step);
+}
+
+/* ================= events ================= */
+document.addEventListener('click', e => {
+  const nav = e.target.closest('[data-nav]');
+  if (nav) {
+    S.ui.navOpen = false;
+    if (nav.getAttribute('href') === location.hash || (nav.getAttribute('href') === '#hq' && !location.hash)) { e.preventDefault(); route(); }
+    return;
+  }
+  const a = e.target.closest('[data-action]'); if (!a) return;
+  const link = e.target.closest('a[href]'); if (link && link !== a && a.contains(link)) return;
+  const fn = A[a.dataset.action]; if (!fn) return;
+  e.preventDefault(); fn(a.dataset, a, e);
+});
+document.addEventListener('change', e => {
+  const t = e.target;
+  if (t.matches('[data-change="goal"]')) toggleGoal(t.dataset.pid, t.dataset.sid, t.dataset.gid, t.checked, t);
+  else if (t.id === 'np-starter' && S.modal) S.modal.starter = t.checked;
+  else if (t.id === 'as-starter') S.ui.addStarter = t.checked;
+});
+document.addEventListener('input', e => { if (e.target.id === 'nb-search') { S.ui.q = e.target.value; render(); } });
+document.addEventListener('submit', e => {
+  const f = e.target.closest('form[data-form]'); if (!f) return;
+  e.preventDefault(); const fn = F[f.dataset.form]; if (fn) fn(f);
+});
+document.addEventListener('toggle', e => { if (e.target.matches && e.target.matches('details.parked')) S.ui.parkedOpen = e.target.open; }, true);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (S.modal) { closeModal(); return; }
+    if (S.ui.navOpen) { S.ui.navOpen = false; render(); return; }
+    const u = S.ui; if (u.editGoal || u.editIdea || u.renameSec || u.linkEdit || u.editProj || u.confirm || u.addSec || u.suggest) { clearEdits(); render(); }
+    return;
+  }
+  if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+    const f = e.target.closest && e.target.closest('form[data-form]');
+    if (f) { e.preventDefault(); if (f.requestSubmit) f.requestSubmit(); else f.dispatchEvent(new Event('submit', {cancelable:true, bubbles:true})); }
+  }
+});
+document.addEventListener('pointerover', e => { const t = e.target.closest && e.target.closest('[data-tip]'); if (t) showTip(t); else hideTip(); });
+document.addEventListener('focusin', e => { const t = e.target.closest && e.target.closest('[data-tip]'); if (t) showTip(t); else hideTip(); });
+window.addEventListener('scroll', hideTip, {passive:true});
+window.addEventListener('hashchange', route);
+
+function route(){
+  const h = location.hash.slice(1);
+  if (h === 'notebook') S.view = {name:'notebook'};
+  else if (h.startsWith('project-')) S.view = {name:'project', id: h.slice(8)};
+  else S.view = {name:'hq'};
+  S.ui.navOpen = false;
+  if (S.modal) { if (S.modal.ai && S.modal.ai.ctl) S.modal.ai.ctl.abort(); S.modal = null; }
+  clearEdits(); render(); window.scrollTo(0, 0);
+}
+
+/* ================= boot ================= */
+$('#topbar').innerHTML = `<button class="icon-btn" data-action="nav-toggle" aria-label="Open menu">${ic('menu')}</button><span class="logo" style="width:30px;height:30px">${ic('bolt','fill')}</span><b class="wordmark">Foundry</b><button class="btn sm hl" data-action="jot">${ic('bolt')} Jot</button>`;
+route();
+const c = window.claude;
+if (!c || typeof c.use !== 'function') startLocal();
+else {
+  c.use('db').then(db => db ? startDb(db) : startLocal(), () => startLocal());
+  c.use('sample').then(fn => { if (typeof fn === 'function') { S.ai = fn; render(); } }, () => {});
+}
+})();
+</script>
+
+</body></html>

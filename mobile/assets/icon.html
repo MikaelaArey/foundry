@@ -1,0 +1,9 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+html,body{margin:0;width:1024px;height:1024px;overflow:hidden}
+.bg{width:1024px;height:1024px;position:relative;
+  background:
+    radial-gradient(620px 520px at 22% 18%, rgba(255,255,255,.28), transparent 60%),
+    conic-gradient(from 210deg at 50% 55%, #ff8a4c, #7a5cff 28%, #5a45f2 45%, #2f7bf6 70%, #ff8a4c);}
+.bg::after{content:"";position:absolute;inset:0;background:radial-gradient(700px 600px at 80% 95%, rgba(10,6,40,.35), transparent 65%)}
+svg{position:absolute;left:50%;top:50%;width:560px;height:560px;transform:translate(-50%,-50%);filter:drop-shadow(0 24px 40px rgba(20,10,80,.35));z-index:1}
+</style></head><body><div class="bg"><svg viewBox="0 0 24 24"><path fill="#fff" d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg></div></body></html>

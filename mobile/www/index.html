@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Foundry</title>
+<style>
+  :root { color-scheme: light dark; --bg: #fafafc; --ink: #0d0e1a; --soft: #464962; --brand: #5a45f2; --brand2: #2f7bf6; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #09090f; --ink: #ededf7; --soft: #a9abc3; --brand: #7a68ff; --brand2: #4d8dff; } }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body { display: grid; place-items: center; padding: 24px; background: var(--bg); color: var(--ink);
+         font: 16px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif; text-align: center; }
+  .card { max-width: 340px; display: grid; gap: 14px; justify-items: center; }
+  .mark { width: 64px; height: 64px; border-radius: 18px; display: grid; place-items: center;
+          background: conic-gradient(from 210deg, #ff8a4c, #5a45f2, #2f7bf6, #ff8a4c); color: #fff; }
+  h1 { margin: 6px 0 0; font: 600 26px/1.2 ui-serif, "New York", Georgia, serif; }
+  p { margin: 0; color: var(--soft); }
+  button { margin-top: 8px; height: 48px; padding: 0 28px; border: 0; border-radius: 14px; color: #fff; font: 600 16px system-ui, sans-serif;
+           background: linear-gradient(135deg, var(--brand), var(--brand2)); }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="mark" aria-hidden="true">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg>
+    </div>
+    <h1>Opening Foundry…</h1>
+    <p>Loading your workspace.</p>
+    <button id="retry">Open Foundry</button>
+  </main>
+  <script src="config.js"></script>
+  <script>
+    document.getElementById("retry").addEventListener("click", function () {
+      location.href = (window.FOUNDRY_APP_URL || "http://localhost:3000") + "/app";
+    });
+  </script>
+</body>
+</html>
