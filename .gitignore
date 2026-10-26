@@ -15,3 +15,5 @@ vercel-settings.env
 .vercel
 .env*
 !.env.example
+app-review-account.txt
+build/

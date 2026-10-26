@@ -103,7 +103,7 @@ Everything else (location, contacts, health, financial info, browsing history, u
 | Field | Value |
 | --- | --- |
 | Sign-in required | Yes |
-| Demo account | Create a real account on https://foundry-founders.vercel.app for Apple, for example `areybusiness23+appreview@gmail.com` (the `+appreview` part still delivers to your inbox), and add a sample project and idea. Don't use the local demo account; it only exists on your Mac. |
+| Demo account | `areybusiness23+appreview@gmail.com`, already created on the live site with sample content. The password is in `app-review-account.txt` in the foundry folder (kept off GitHub). |
 | Contact | Your name, phone and email |
 
 **Notes for the reviewer** (paste as is, after filling in the demo account):
