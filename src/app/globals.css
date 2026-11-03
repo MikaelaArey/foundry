@@ -787,6 +787,16 @@ p {
   justify-content: space-between;
   align-items: center;
 }
+.site-footer-legal {
+  flex-basis: 100%;
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+.app-store-badge img {
+  display: block;
+  width: auto;
+  height: 44px;
+}
 
 /* ----------------------------------------------------------------- hero */
 .hero {
@@ -807,6 +817,12 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+.hero-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
 }
 .hero-visual {
   position: relative;

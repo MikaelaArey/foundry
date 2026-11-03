@@ -43,7 +43,7 @@ export async function Chrome({
         <main className="container" style={{ paddingBlock: "40px 0", display: "grid", gap: 28 }}>
           {children}
         </main>
-        <SiteFooter />
+        <SiteFooter appBadge />
       </>
     );
   }

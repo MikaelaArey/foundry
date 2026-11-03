@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getCurrentUser } from "@/lib/auth";
+import { APP_STORE_URL, isNativeApp } from "@/lib/config";
 import { Brand } from "./ui";
 import { Icon } from "./icon";
 import { ThemeToggle } from "./theme-toggle";
@@ -40,7 +41,22 @@ export async function SiteHeader({ current }: { current?: "explore" | "community
   );
 }
 
-export function SiteFooter() {
+/**
+ * Apple's badge artwork, unaltered. Apple allows one per page and asks for 40px of height
+ * at minimum, with a quarter of the badge's height as clear space. Hidden inside the iPhone app.
+ */
+export async function AppStoreBadge() {
+  if (await isNativeApp()) return null;
+  return (
+    <a href={APP_STORE_URL} className="app-store-badge" target="_blank" rel="noopener noreferrer">
+      <img src="/download-on-the-app-store.svg" alt="Download on the App Store" width={132} height={44} />
+    </a>
+  );
+}
+
+/** Pass appBadge on pages that don't already show the App Store badge. */
+export async function SiteFooter({ appBadge = false }: { appBadge?: boolean }) {
+  const native = await isNativeApp();
   return (
     <footer className="site-footer">
       <div className="container">
@@ -53,6 +69,13 @@ export function SiteFooter() {
           <Link href="/privacy">Privacy</Link>
         </nav>
         <span>Free for founders while in beta.</span>
+        {appBadge ? <AppStoreBadge /> : null}
+        {native ? null : (
+          <p className="site-footer-legal">
+            Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple
+            Inc., registered in the U.S. and other countries.
+          </p>
+        )}
       </div>
     </footer>
   );

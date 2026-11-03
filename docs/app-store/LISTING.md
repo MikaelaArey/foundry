@@ -23,6 +23,7 @@ Everything to paste into App Store Connect, in the order the forms ask for it. C
 | Support URL | `https://foundry-founders.vercel.app/support` |
 | Marketing URL (optional) | `https://foundry-founders.vercel.app` |
 | Privacy Policy URL | `https://foundry-founders.vercel.app/privacy` |
+| Link to share in marketing | `https://apps.apple.com/app/id6826970307` |
 
 ## Promotional text (170)
 

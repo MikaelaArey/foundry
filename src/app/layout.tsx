@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { Toaster } from "@/components/toaster";
 import { NativeBridge } from "@/components/native-bridge";
 import { themeScript } from "@/components/theme-toggle";
+import { APP_STORE_ID } from "@/lib/config";
 import "./globals.css";
 
 const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-serif", display: "swap" });
@@ -31,6 +32,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${serif.variable} ${sans.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        {/* Safari's banner offering the app. Written here so it's always in the first <head>, even on pages with streamed metadata. */}
+        <meta name="apple-itunes-app" content={`app-id=${APP_STORE_ID}`} />
       </head>
       <body>
         {children}

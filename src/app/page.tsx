@@ -6,7 +6,7 @@ import { timeAgo } from "@/lib/utils";
 import { Icon } from "@/components/icon";
 import { Avatar, Ring } from "@/components/ui";
 import { Badges, IdeaCard, ScoreTiles } from "@/components/idea";
-import { SiteFooter, SiteHeader } from "@/components/site-chrome";
+import { AppStoreBadge, SiteFooter, SiteHeader } from "@/components/site-chrome";
 
 export const dynamic = "force-dynamic";
 
@@ -55,7 +55,10 @@ export default async function Home() {
                   Browse the Idea Database
                 </Link>
               </div>
-              <p className="small muted">Free for founders. No credit card.</p>
+              <div className="hero-foot">
+                <AppStoreBadge />
+                <p className="small muted">Free for founders. No credit card.</p>
+              </div>
             </div>
 
             <div className="hero-visual" aria-hidden="true">
