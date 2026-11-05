@@ -37,7 +37,7 @@ Your `.env`, local database and `vercel-settings.env` are never uploaded: `.giti
 
 ## 5. Check the live site
 
-1. Open your address and **sign up** with `your moderator email`. That email is the moderator, so **Moderation** appears in your sidebar.
+1. Open your address and **sign up** with the email you put in `ADMIN_EMAILS`. That email is the moderator, so **Moderation** appears in your sidebar.
 2. Open `/support`, `/terms` and `/privacy` and check that `areybusiness23@gmail.com` shows up.
 3. Create the App Review demo account described in `docs/app-store/LISTING.md`.
 

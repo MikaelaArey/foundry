@@ -106,7 +106,7 @@ Everything else (location, contacts, health, financial info, browsing history, u
 | Field | Value |
 | --- | --- |
 | Sign-in required | Yes |
-| Demo account | `areybusiness23+appreview@gmail.com`, already created on the live site with sample content. The password is in `app-review-account.txt` in the foundry folder (kept off GitHub). |
+| Demo account | Already created on the live site with sample content. Its email and password are in `app-review-account.txt` in the foundry folder (kept off GitHub). |
 | Contact | Your name, phone and email |
 
 **Notes for the reviewer** (paste as is, after filling in the demo account):
