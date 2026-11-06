@@ -2,6 +2,8 @@
 
 A think tank for entrepreneurs. Capture ideas, validate them, and run each project with a progress bar for every part of the business.
 
+**[Download on the App Store](https://apps.apple.com/us/app/foundry-idea-notebook/id6826970307)** · [Open the web app](https://foundry-founders.vercel.app)
+
 ![Foundry home page](docs/screenshots/landing.png)
 
 | Dashboard | Project | Notebook |
